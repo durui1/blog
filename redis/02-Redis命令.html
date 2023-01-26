@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Redis 常用命令 | hemiao3000</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="Java Note All in One">
+    
+    <link rel="preload" href="/assets/css/0.styles.f47fbc3a.css" as="style"><link rel="preload" href="/assets/js/app.2a0e0086.js" as="script"><link rel="preload" href="/assets/js/2.5197d4bf.js" as="script"><link rel="preload" href="/assets/js/237.26987a4d.js" as="script"><link rel="prefetch" href="/assets/js/10.1e3cab56.js"><link rel="prefetch" href="/assets/js/100.89eb403f.js"><link rel="prefetch" href="/assets/js/101.42d7809e.js"><link rel="prefetch" href="/assets/js/102.1c8eb525.js"><link rel="prefetch" href="/assets/js/103.9b9587fa.js"><link rel="prefetch" href="/assets/js/104.e85d06e9.js"><link rel="prefetch" href="/assets/js/105.065aabba.js"><link rel="prefetch" href="/assets/js/106.c0bac4b5.js"><link rel="prefetch" href="/assets/js/107.a8264130.js"><link rel="prefetch" href="/assets/js/108.1477276e.js"><link rel="prefetch" href="/assets/js/109.88fbb61d.js"><link rel="prefetch" href="/assets/js/11.59a88738.js"><link rel="prefetch" href="/assets/js/110.bba6173c.js"><link rel="prefetch" href="/assets/js/111.34995448.js"><link rel="prefetch" href="/assets/js/112.3a469dd7.js"><link rel="prefetch" href="/assets/js/113.48b9f2fc.js"><link rel="prefetch" href="/assets/js/114.e0e063d3.js"><link rel="prefetch" href="/assets/js/115.eb7bf139.js"><link rel="prefetch" href="/assets/js/116.2189e21c.js"><link rel="prefetch" href="/assets/js/117.14be282d.js"><link rel="prefetch" href="/assets/js/118.99748a5e.js"><link rel="prefetch" href="/assets/js/119.e96e566b.js"><link rel="prefetch" href="/assets/js/12.298adfbe.js"><link rel="prefetch" href="/assets/js/120.384055c6.js"><link rel="prefetch" href="/assets/js/121.5ff8ea86.js"><link rel="prefetch" href="/assets/js/122.a0f0b033.js"><link rel="prefetch" href="/assets/js/123.77d612f1.js"><link rel="prefetch" href="/assets/js/124.1858235e.js"><link rel="prefetch" href="/assets/js/125.6088837a.js"><link rel="prefetch" href="/assets/js/126.f60cd78b.js"><link rel="prefetch" href="/assets/js/127.644059b1.js"><link rel="prefetch" href="/assets/js/128.ccde4b43.js"><link rel="prefetch" href="/assets/js/129.ea900aff.js"><link rel="prefetch" href="/assets/js/13.70824278.js"><link rel="prefetch" href="/assets/js/130.814ef2bd.js"><link rel="prefetch" href="/assets/js/131.0a15549e.js"><link rel="prefetch" href="/assets/js/132.5a483c59.js"><link rel="prefetch" href="/assets/js/133.f472519c.js"><link rel="prefetch" href="/assets/js/134.98724413.js"><link rel="prefetch" href="/assets/js/135.b1227763.js"><link rel="prefetch" href="/assets/js/136.569394ce.js"><link rel="prefetch" href="/assets/js/137.cb57c3ea.js"><link rel="prefetch" href="/assets/js/138.bf44da29.js"><link rel="prefetch" href="/assets/js/139.4d58dd61.js"><link rel="prefetch" href="/assets/js/14.2e6e5e48.js"><link rel="prefetch" href="/assets/js/140.9366ee37.js"><link rel="prefetch" href="/assets/js/141.f4b07b92.js"><link rel="prefetch" href="/assets/js/142.1135b70d.js"><link rel="prefetch" href="/assets/js/143.f4f7c551.js"><link rel="prefetch" href="/assets/js/144.39c67abd.js"><link rel="prefetch" href="/assets/js/145.d703b2bd.js"><link rel="prefetch" href="/assets/js/146.eb70e2fc.js"><link rel="prefetch" href="/assets/js/147.ce03361f.js"><link rel="prefetch" href="/assets/js/148.92d3943c.js"><link rel="prefetch" href="/assets/js/149.9863294e.js"><link rel="prefetch" href="/assets/js/15.da7ebcce.js"><link rel="prefetch" href="/assets/js/150.482dfaea.js"><link rel="prefetch" href="/assets/js/151.e10026cf.js"><link rel="prefetch" href="/assets/js/152.83952b99.js"><link rel="prefetch" href="/assets/js/153.7f3abc9c.js"><link rel="prefetch" href="/assets/js/154.8d6fe380.js"><link rel="prefetch" href="/assets/js/155.ee846f8c.js"><link rel="prefetch" href="/assets/js/156.30307bd5.js"><link rel="prefetch" href="/assets/js/157.cdd398ff.js"><link rel="prefetch" href="/assets/js/158.4fc1be51.js"><link rel="prefetch" href="/assets/js/159.3f8f4e04.js"><link rel="prefetch" href="/assets/js/16.32dbb119.js"><link rel="prefetch" href="/assets/js/160.8e328e24.js"><link rel="prefetch" href="/assets/js/161.1a1af511.js"><link rel="prefetch" href="/assets/js/162.c103da42.js"><link rel="prefetch" href="/assets/js/163.d9d38d65.js"><link rel="prefetch" href="/assets/js/164.e446e185.js"><link rel="prefetch" href="/assets/js/165.cee81e4f.js"><link rel="prefetch" href="/assets/js/166.2a838c3c.js"><link rel="prefetch" href="/assets/js/167.34bdc749.js"><link rel="prefetch" href="/assets/js/168.62adc13c.js"><link rel="prefetch" href="/assets/js/169.64528cc5.js"><link rel="prefetch" href="/assets/js/17.dd5dbf07.js"><link rel="prefetch" href="/assets/js/170.f4ff41c8.js"><link rel="prefetch" href="/assets/js/171.aebcc4a6.js"><link rel="prefetch" href="/assets/js/172.f941c291.js"><link rel="prefetch" href="/assets/js/173.0cb6857b.js"><link rel="prefetch" href="/assets/js/174.308fbfaa.js"><link rel="prefetch" href="/assets/js/175.1733770a.js"><link rel="prefetch" href="/assets/js/176.ffe8bb57.js"><link rel="prefetch" href="/assets/js/177.d61cf9c9.js"><link rel="prefetch" href="/assets/js/178.c676e6ad.js"><link rel="prefetch" href="/assets/js/179.021bd5b9.js"><link rel="prefetch" href="/assets/js/18.4c426f41.js"><link rel="prefetch" href="/assets/js/180.b6d56d9f.js"><link rel="prefetch" href="/assets/js/181.3e29a2f4.js"><link rel="prefetch" href="/assets/js/182.96c1421b.js"><link rel="prefetch" href="/assets/js/183.bfcdc6de.js"><link rel="prefetch" href="/assets/js/184.acb50183.js"><link rel="prefetch" href="/assets/js/185.2be24c25.js"><link rel="prefetch" href="/assets/js/186.8b6d56c2.js"><link rel="prefetch" href="/assets/js/187.83f09498.js"><link rel="prefetch" href="/assets/js/188.19f84a49.js"><link rel="prefetch" href="/assets/js/189.507b1b8f.js"><link rel="prefetch" href="/assets/js/19.a866d939.js"><link rel="prefetch" href="/assets/js/190.a7f35c31.js"><link rel="prefetch" href="/assets/js/191.44e116bb.js"><link rel="prefetch" href="/assets/js/192.7b3ad93e.js"><link rel="prefetch" href="/assets/js/193.3d7a6691.js"><link rel="prefetch" href="/assets/js/194.6b59737c.js"><link rel="prefetch" href="/assets/js/195.93da8eb6.js"><link rel="prefetch" href="/assets/js/196.a1dc2772.js"><link rel="prefetch" href="/assets/js/197.e8905822.js"><link rel="prefetch" href="/assets/js/198.73d65a99.js"><link rel="prefetch" href="/assets/js/199.e20013c6.js"><link rel="prefetch" href="/assets/js/20.b421340a.js"><link rel="prefetch" href="/assets/js/200.c40695bd.js"><link rel="prefetch" href="/assets/js/201.4a211b60.js"><link rel="prefetch" href="/assets/js/202.18d28a26.js"><link rel="prefetch" href="/assets/js/203.27baad27.js"><link rel="prefetch" href="/assets/js/204.a382712d.js"><link rel="prefetch" href="/assets/js/205.e1dc43b7.js"><link rel="prefetch" href="/assets/js/206.44bd5da0.js"><link rel="prefetch" href="/assets/js/207.4db861da.js"><link rel="prefetch" href="/assets/js/208.232fb574.js"><link rel="prefetch" href="/assets/js/209.42950be5.js"><link rel="prefetch" href="/assets/js/21.f95f1c41.js"><link rel="prefetch" href="/assets/js/210.2d10d529.js"><link rel="prefetch" href="/assets/js/211.b16924d3.js"><link rel="prefetch" href="/assets/js/212.a22fdde7.js"><link rel="prefetch" href="/assets/js/213.43351b18.js"><link rel="prefetch" href="/assets/js/214.0b4e4e90.js"><link rel="prefetch" href="/assets/js/215.92066f5f.js"><link rel="prefetch" href="/assets/js/216.2433eee2.js"><link rel="prefetch" href="/assets/js/217.87aa4253.js"><link rel="prefetch" href="/assets/js/218.3e291446.js"><link rel="prefetch" href="/assets/js/219.ba666ae8.js"><link rel="prefetch" href="/assets/js/22.f2f0b7f6.js"><link rel="prefetch" href="/assets/js/220.3dcced4b.js"><link rel="prefetch" href="/assets/js/221.8eff3d5c.js"><link rel="prefetch" href="/assets/js/222.4d16a7ca.js"><link rel="prefetch" href="/assets/js/223.4e3c17c8.js"><link rel="prefetch" href="/assets/js/224.389b19fe.js"><link rel="prefetch" href="/assets/js/225.ee085656.js"><link rel="prefetch" href="/assets/js/226.15bd3b0e.js"><link rel="prefetch" href="/assets/js/227.b12ea50d.js"><link rel="prefetch" href="/assets/js/228.5fe7b89c.js"><link rel="prefetch" href="/assets/js/229.e16a8ad5.js"><link rel="prefetch" href="/assets/js/23.3b332f61.js"><link rel="prefetch" href="/assets/js/230.db0c8438.js"><link rel="prefetch" href="/assets/js/231.9cf35e55.js"><link rel="prefetch" href="/assets/js/232.7bec532c.js"><link rel="prefetch" href="/assets/js/233.6ddb95e4.js"><link rel="prefetch" href="/assets/js/234.2101fb24.js"><link rel="prefetch" href="/assets/js/235.afb383b5.js"><link rel="prefetch" href="/assets/js/236.846b6704.js"><link rel="prefetch" href="/assets/js/238.e3e59456.js"><link rel="prefetch" href="/assets/js/239.5ea507c1.js"><link rel="prefetch" href="/assets/js/24.f970f639.js"><link rel="prefetch" href="/assets/js/240.766dc0cd.js"><link rel="prefetch" href="/assets/js/241.f91c7b87.js"><link rel="prefetch" href="/assets/js/242.baee8029.js"><link rel="prefetch" href="/assets/js/243.fa7f9b90.js"><link rel="prefetch" href="/assets/js/244.1b536f15.js"><link rel="prefetch" href="/assets/js/245.10355873.js"><link rel="prefetch" href="/assets/js/246.1671ca24.js"><link rel="prefetch" href="/assets/js/247.5acd1cfd.js"><link rel="prefetch" href="/assets/js/248.557b93ba.js"><link rel="prefetch" href="/assets/js/249.6325cda5.js"><link rel="prefetch" href="/assets/js/25.915ccb8b.js"><link rel="prefetch" href="/assets/js/250.2c47b263.js"><link rel="prefetch" href="/assets/js/251.b9915ea2.js"><link rel="prefetch" href="/assets/js/252.1769b4ce.js"><link rel="prefetch" href="/assets/js/253.b3f176b9.js"><link rel="prefetch" href="/assets/js/254.20747e20.js"><link rel="prefetch" href="/assets/js/255.10dd24b0.js"><link rel="prefetch" href="/assets/js/256.77789711.js"><link rel="prefetch" href="/assets/js/257.dfce5065.js"><link rel="prefetch" href="/assets/js/258.20d46398.js"><link rel="prefetch" href="/assets/js/259.7bb7e68d.js"><link rel="prefetch" href="/assets/js/26.6beeb907.js"><link rel="prefetch" href="/assets/js/260.7297cae9.js"><link rel="prefetch" href="/assets/js/261.1864517a.js"><link rel="prefetch" href="/assets/js/262.5d7edfe0.js"><link rel="prefetch" href="/assets/js/263.10d4609c.js"><link rel="prefetch" href="/assets/js/264.ed74db82.js"><link rel="prefetch" href="/assets/js/265.bf0968ee.js"><link rel="prefetch" href="/assets/js/266.aa1f5527.js"><link rel="prefetch" href="/assets/js/267.a60b73d1.js"><link rel="prefetch" href="/assets/js/268.93b88726.js"><link rel="prefetch" href="/assets/js/269.23335c50.js"><link rel="prefetch" href="/assets/js/27.e3d799b8.js"><link rel="prefetch" href="/assets/js/270.cdcc6831.js"><link rel="prefetch" href="/assets/js/271.895326b4.js"><link rel="prefetch" href="/assets/js/272.994f0815.js"><link rel="prefetch" href="/assets/js/273.4b7d1596.js"><link rel="prefetch" href="/assets/js/274.95de5708.js"><link rel="prefetch" href="/assets/js/275.d3f1ea3a.js"><link rel="prefetch" href="/assets/js/276.e523da0d.js"><link rel="prefetch" href="/assets/js/277.cfd44766.js"><link rel="prefetch" href="/assets/js/278.0c433a12.js"><link rel="prefetch" href="/assets/js/279.a1ed8745.js"><link rel="prefetch" href="/assets/js/28.04104649.js"><link rel="prefetch" href="/assets/js/280.3fcf8899.js"><link rel="prefetch" href="/assets/js/281.47c5a007.js"><link rel="prefetch" href="/assets/js/282.ba9f0bde.js"><link rel="prefetch" href="/assets/js/283.adfd31b2.js"><link rel="prefetch" href="/assets/js/284.60b76cd7.js"><link rel="prefetch" href="/assets/js/285.2b3e7c47.js"><link rel="prefetch" href="/assets/js/286.4d559cb5.js"><link rel="prefetch" href="/assets/js/287.20392707.js"><link rel="prefetch" href="/assets/js/288.25ea64b4.js"><link rel="prefetch" href="/assets/js/289.9eed054c.js"><link rel="prefetch" href="/assets/js/29.499f1d39.js"><link rel="prefetch" href="/assets/js/290.9d5b0811.js"><link rel="prefetch" href="/assets/js/291.2968091e.js"><link rel="prefetch" href="/assets/js/292.786f219f.js"><link rel="prefetch" href="/assets/js/293.49fce9ba.js"><link rel="prefetch" href="/assets/js/294.8efa6e84.js"><link rel="prefetch" href="/assets/js/295.2b36b304.js"><link rel="prefetch" href="/assets/js/296.d317e8a1.js"><link rel="prefetch" href="/assets/js/297.ccfd968b.js"><link rel="prefetch" href="/assets/js/298.8163f812.js"><link rel="prefetch" href="/assets/js/299.c36aa0b8.js"><link rel="prefetch" href="/assets/js/3.ec3ff53e.js"><link rel="prefetch" href="/assets/js/30.ffa7e894.js"><link rel="prefetch" href="/assets/js/300.3fdb0d70.js"><link rel="prefetch" href="/assets/js/301.6cb7bd6e.js"><link rel="prefetch" href="/assets/js/302.45daeffe.js"><link rel="prefetch" href="/assets/js/303.100b3d5b.js"><link rel="prefetch" href="/assets/js/304.2019f7cc.js"><link rel="prefetch" href="/assets/js/305.188c6b80.js"><link rel="prefetch" href="/assets/js/306.df056bf9.js"><link rel="prefetch" href="/assets/js/307.4339b90a.js"><link rel="prefetch" href="/assets/js/308.fa360ec4.js"><link rel="prefetch" href="/assets/js/309.f131c986.js"><link rel="prefetch" href="/assets/js/31.72c967d1.js"><link rel="prefetch" href="/assets/js/310.a662fb66.js"><link rel="prefetch" href="/assets/js/311.96067cfa.js"><link rel="prefetch" href="/assets/js/312.b439b634.js"><link rel="prefetch" href="/assets/js/313.aee52801.js"><link rel="prefetch" href="/assets/js/314.326267fc.js"><link rel="prefetch" href="/assets/js/315.19ccdf1b.js"><link rel="prefetch" href="/assets/js/316.1180f907.js"><link rel="prefetch" href="/assets/js/317.2d9d626f.js"><link rel="prefetch" href="/assets/js/318.0edae3ea.js"><link rel="prefetch" href="/assets/js/319.6e587615.js"><link rel="prefetch" href="/assets/js/32.1e042532.js"><link rel="prefetch" href="/assets/js/320.4da94556.js"><link rel="prefetch" href="/assets/js/321.bdf03815.js"><link rel="prefetch" href="/assets/js/322.2e95a194.js"><link rel="prefetch" href="/assets/js/323.6afcc73e.js"><link rel="prefetch" href="/assets/js/324.c7e424e8.js"><link rel="prefetch" href="/assets/js/325.1f5fe5cc.js"><link rel="prefetch" href="/assets/js/326.30472009.js"><link rel="prefetch" href="/assets/js/327.e1a3c701.js"><link rel="prefetch" href="/assets/js/328.8b54cbce.js"><link rel="prefetch" href="/assets/js/329.e437b757.js"><link rel="prefetch" href="/assets/js/33.2071fa71.js"><link rel="prefetch" href="/assets/js/330.23075090.js"><link rel="prefetch" href="/assets/js/331.cb3c8ba2.js"><link rel="prefetch" href="/assets/js/332.d48777dd.js"><link rel="prefetch" href="/assets/js/333.20de85d6.js"><link rel="prefetch" href="/assets/js/334.9aa45eec.js"><link rel="prefetch" href="/assets/js/335.cf061868.js"><link rel="prefetch" href="/assets/js/336.7bdc4422.js"><link rel="prefetch" href="/assets/js/337.4c35c225.js"><link rel="prefetch" href="/assets/js/338.b258f72d.js"><link rel="prefetch" href="/assets/js/339.60b8a4dd.js"><link rel="prefetch" href="/assets/js/34.a8cfe758.js"><link rel="prefetch" href="/assets/js/340.b55b6096.js"><link rel="prefetch" href="/assets/js/341.84aca80e.js"><link rel="prefetch" href="/assets/js/342.9b2f9017.js"><link rel="prefetch" href="/assets/js/343.844f2bc7.js"><link rel="prefetch" href="/assets/js/344.6bb02350.js"><link rel="prefetch" href="/assets/js/345.9c62eaba.js"><link rel="prefetch" href="/assets/js/346.fca463be.js"><link rel="prefetch" href="/assets/js/347.8970fcbf.js"><link rel="prefetch" href="/assets/js/348.a6b83491.js"><link rel="prefetch" href="/assets/js/349.08be2f0b.js"><link rel="prefetch" href="/assets/js/35.cdd41f71.js"><link rel="prefetch" href="/assets/js/350.baf44f92.js"><link rel="prefetch" href="/assets/js/351.2d8a8d39.js"><link rel="prefetch" href="/assets/js/352.f666bb14.js"><link rel="prefetch" href="/assets/js/353.10ece07a.js"><link rel="prefetch" href="/assets/js/354.c6e9ef1f.js"><link rel="prefetch" href="/assets/js/355.40eec06d.js"><link rel="prefetch" href="/assets/js/356.cc2f1b7f.js"><link rel="prefetch" href="/assets/js/357.10e344e1.js"><link rel="prefetch" href="/assets/js/358.5e8d05a0.js"><link rel="prefetch" href="/assets/js/359.2d525223.js"><link rel="prefetch" href="/assets/js/36.919e6ba3.js"><link rel="prefetch" href="/assets/js/360.da8a1144.js"><link rel="prefetch" href="/assets/js/361.1ac300c0.js"><link rel="prefetch" href="/assets/js/362.8701799f.js"><link rel="prefetch" href="/assets/js/363.e46c31c4.js"><link rel="prefetch" href="/assets/js/364.fc6c4a8a.js"><link rel="prefetch" href="/assets/js/365.da925c8b.js"><link rel="prefetch" href="/assets/js/366.fa02c4db.js"><link rel="prefetch" href="/assets/js/367.e84e0fb3.js"><link rel="prefetch" href="/assets/js/368.359d83e3.js"><link rel="prefetch" href="/assets/js/369.58af2f70.js"><link rel="prefetch" href="/assets/js/37.88355974.js"><link rel="prefetch" href="/assets/js/370.66a40ffb.js"><link rel="prefetch" href="/assets/js/371.ee99818a.js"><link rel="prefetch" href="/assets/js/372.5d9079db.js"><link rel="prefetch" href="/assets/js/373.0359fd60.js"><link rel="prefetch" href="/assets/js/374.a4de99b1.js"><link rel="prefetch" href="/assets/js/375.4570b37a.js"><link rel="prefetch" href="/assets/js/376.53476bba.js"><link rel="prefetch" href="/assets/js/377.689818f7.js"><link rel="prefetch" href="/assets/js/378.d89d31af.js"><link rel="prefetch" href="/assets/js/379.fb82d60c.js"><link rel="prefetch" href="/assets/js/38.cad0fc71.js"><link rel="prefetch" href="/assets/js/380.85198566.js"><link rel="prefetch" href="/assets/js/381.ae8317d1.js"><link rel="prefetch" href="/assets/js/382.58c9e741.js"><link rel="prefetch" href="/assets/js/383.ee3fe633.js"><link rel="prefetch" href="/assets/js/384.0a191212.js"><link rel="prefetch" href="/assets/js/385.e3ccc3ad.js"><link rel="prefetch" href="/assets/js/386.22027d7d.js"><link rel="prefetch" href="/assets/js/387.3eeb0716.js"><link rel="prefetch" href="/assets/js/388.5c149843.js"><link rel="prefetch" href="/assets/js/389.9b50d957.js"><link rel="prefetch" href="/assets/js/39.24010b8d.js"><link rel="prefetch" href="/assets/js/390.39b1f5ff.js"><link rel="prefetch" href="/assets/js/391.cbcda5c9.js"><link rel="prefetch" href="/assets/js/392.f995f59f.js"><link rel="prefetch" href="/assets/js/393.2f75984b.js"><link rel="prefetch" href="/assets/js/394.ea7f3774.js"><link rel="prefetch" href="/assets/js/395.4f424dee.js"><link rel="prefetch" href="/assets/js/396.c76bc489.js"><link rel="prefetch" href="/assets/js/397.8a1b2cc3.js"><link rel="prefetch" href="/assets/js/398.42e064e4.js"><link rel="prefetch" href="/assets/js/399.16f3d435.js"><link rel="prefetch" href="/assets/js/4.93ec791c.js"><link rel="prefetch" href="/assets/js/40.bd3d9a39.js"><link rel="prefetch" href="/assets/js/400.3440cb4b.js"><link rel="prefetch" href="/assets/js/401.827b23b9.js"><link rel="prefetch" href="/assets/js/402.c6a70840.js"><link rel="prefetch" href="/assets/js/403.dc8d0f36.js"><link rel="prefetch" href="/assets/js/404.05a4374e.js"><link rel="prefetch" href="/assets/js/405.3c45c89c.js"><link rel="prefetch" href="/assets/js/406.66d1d0f4.js"><link rel="prefetch" href="/assets/js/407.a0518bda.js"><link rel="prefetch" href="/assets/js/408.0056dad8.js"><link rel="prefetch" href="/assets/js/409.1f9aefa6.js"><link rel="prefetch" href="/assets/js/41.9e141a4f.js"><link rel="prefetch" href="/assets/js/410.a35b5300.js"><link rel="prefetch" href="/assets/js/411.bc9650d2.js"><link rel="prefetch" href="/assets/js/412.e00f104b.js"><link rel="prefetch" href="/assets/js/413.25ef56c5.js"><link rel="prefetch" href="/assets/js/414.cdaa11bd.js"><link rel="prefetch" href="/assets/js/415.cce2a856.js"><link rel="prefetch" href="/assets/js/416.fa9934bd.js"><link rel="prefetch" href="/assets/js/417.500f47ea.js"><link rel="prefetch" href="/assets/js/418.2ef6f6ba.js"><link rel="prefetch" href="/assets/js/419.ec8571b4.js"><link rel="prefetch" href="/assets/js/42.d492b5aa.js"><link rel="prefetch" href="/assets/js/420.be2674a7.js"><link rel="prefetch" href="/assets/js/421.d7bb6384.js"><link rel="prefetch" href="/assets/js/422.8749a7a6.js"><link rel="prefetch" href="/assets/js/423.418f421a.js"><link rel="prefetch" href="/assets/js/424.9ba49f0f.js"><link rel="prefetch" href="/assets/js/425.2f1bc2f7.js"><link rel="prefetch" href="/assets/js/426.e0af5b96.js"><link rel="prefetch" href="/assets/js/427.4f00c4a0.js"><link rel="prefetch" href="/assets/js/43.9a0ca836.js"><link rel="prefetch" href="/assets/js/44.ac3652d4.js"><link rel="prefetch" href="/assets/js/45.2d07d148.js"><link rel="prefetch" href="/assets/js/46.0c2866e6.js"><link rel="prefetch" href="/assets/js/47.cf37ad71.js"><link rel="prefetch" href="/assets/js/48.74897468.js"><link rel="prefetch" href="/assets/js/49.f6cefa1d.js"><link rel="prefetch" href="/assets/js/5.112a4da8.js"><link rel="prefetch" href="/assets/js/50.6adecd4c.js"><link rel="prefetch" href="/assets/js/51.0f539ecd.js"><link rel="prefetch" href="/assets/js/52.ff2d24a2.js"><link rel="prefetch" href="/assets/js/53.41f9aecc.js"><link rel="prefetch" href="/assets/js/54.9986979d.js"><link rel="prefetch" href="/assets/js/55.c3bf2fc5.js"><link rel="prefetch" href="/assets/js/56.ca9f6c28.js"><link rel="prefetch" href="/assets/js/57.699610a3.js"><link rel="prefetch" href="/assets/js/58.dc7773de.js"><link rel="prefetch" href="/assets/js/59.b85736ff.js"><link rel="prefetch" href="/assets/js/6.3e921c42.js"><link rel="prefetch" href="/assets/js/60.f1003898.js"><link rel="prefetch" href="/assets/js/61.c4c403f4.js"><link rel="prefetch" href="/assets/js/62.ed8e50a5.js"><link rel="prefetch" href="/assets/js/63.64cd3fee.js"><link rel="prefetch" href="/assets/js/64.e388d5ae.js"><link rel="prefetch" href="/assets/js/65.29951343.js"><link rel="prefetch" href="/assets/js/66.1ea4ad87.js"><link rel="prefetch" href="/assets/js/67.463a27f8.js"><link rel="prefetch" href="/assets/js/68.88e8b422.js"><link rel="prefetch" href="/assets/js/69.ce1b84b3.js"><link rel="prefetch" href="/assets/js/7.5c268975.js"><link rel="prefetch" href="/assets/js/70.551c5f52.js"><link rel="prefetch" href="/assets/js/71.cd36811b.js"><link rel="prefetch" href="/assets/js/72.1b96650f.js"><link rel="prefetch" href="/assets/js/73.736d3bfe.js"><link rel="prefetch" href="/assets/js/74.96ff3fac.js"><link rel="prefetch" href="/assets/js/75.84d8a749.js"><link rel="prefetch" href="/assets/js/76.fac6e027.js"><link rel="prefetch" href="/assets/js/77.4f2d1524.js"><link rel="prefetch" href="/assets/js/78.aa8c1ca1.js"><link rel="prefetch" href="/assets/js/79.c31601c8.js"><link rel="prefetch" href="/assets/js/8.a4eb93a7.js"><link rel="prefetch" href="/assets/js/80.3139181d.js"><link rel="prefetch" href="/assets/js/81.614abe85.js"><link rel="prefetch" href="/assets/js/82.2d806c4d.js"><link rel="prefetch" href="/assets/js/83.537cd6eb.js"><link rel="prefetch" href="/assets/js/84.8be49118.js"><link rel="prefetch" href="/assets/js/85.eab92218.js"><link rel="prefetch" href="/assets/js/86.30bf9928.js"><link rel="prefetch" href="/assets/js/87.d4db1c81.js"><link rel="prefetch" href="/assets/js/88.1d9ff3df.js"><link rel="prefetch" href="/assets/js/89.21115247.js"><link rel="prefetch" href="/assets/js/9.c513f608.js"><link rel="prefetch" href="/assets/js/90.ade9e720.js"><link rel="prefetch" href="/assets/js/91.b4fdf18b.js"><link rel="prefetch" href="/assets/js/92.53aaea7d.js"><link rel="prefetch" href="/assets/js/93.0b954340.js"><link rel="prefetch" href="/assets/js/94.1e64c3b0.js"><link rel="prefetch" href="/assets/js/95.6a103dc3.js"><link rel="prefetch" href="/assets/js/96.716744ae.js"><link rel="prefetch" href="/assets/js/97.25459d09.js"><link rel="prefetch" href="/assets/js/98.b6c42c9e.js"><link rel="prefetch" href="/assets/js/99.b87bc26a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.f47fbc3a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">hemiao3000</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具库" class="dropdown-title"><span class="title">工具库</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具库" class="mobile-dropdown-title"><span class="title">工具库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/utility/spring-utils/01-top4.html" class="nav-link">
+  Spring 内置工具库
+</a></li><li class="dropdown-item"><!----> <a href="/utility/guava/01-字符串工具类.html" class="nav-link">
+  Guava 工具库
+</a></li><li class="dropdown-item"><!----> <a href="/utility/3rd/01-slf4j.html" class="nav-link">
+  其它工具库
+</a></li><li class="dropdown-item"><!----> <a href="/gist/01-jdbc.html" class="nav-link">
+  各种模板
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="第一阶段" class="dropdown-title"><span class="title">第一阶段</span> <span class="arrow down"></span></button> <button type="button" aria-label="第一阶段" class="mobile-dropdown-title"><span class="title">第一阶段</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/01-Java语法汇总.html" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/java-thread/01-base.html" class="nav-link">
+  Java 多线程
+</a></li><li class="dropdown-item"><!----> <a href="/java8/02-lambda.html" class="nav-link">
+  JDK8 新特性
+</a></li><li class="dropdown-item"><!----> <a href="/mysql/01-操作Database.html" class="nav-link">
+  MySQL 数据库
+</a></li><li class="dropdown-item"><!----> <a href="/jdbc/01-JDBC基础.html" class="nav-link">
+  JDBC 操作数据库
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="第二阶段" class="dropdown-title"><span class="title">第二阶段</span> <span class="arrow down"></span></button> <button type="button" aria-label="第二阶段" class="mobile-dropdown-title"><span class="title">第二阶段</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/html/01-基本概念和结构.html" class="nav-link">
+  HTML
+</a></li><li class="dropdown-item"><!----> <a href="/css/01-基本概念.html" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/js/01-基础.html" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/servlet/00-HTTP概述.html" class="nav-link">
+  Servlet
+</a></li><li class="dropdown-item"><!----> <a href="/junit/01-基础.html" class="nav-link">
+  JUnit
+</a></li><li class="dropdown-item"><!----> <a href="/mybatis/01-basics.html" class="nav-link">
+  Mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/ajax/01-基础.html" class="nav-link">
+  AJAX 请求及相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="第三阶段" class="dropdown-title"><span class="title">第三阶段</span> <span class="arrow down"></span></button> <button type="button" aria-label="第三阶段" class="mobile-dropdown-title"><span class="title">第三阶段</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/maven/001-基本概念.html" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/spring/01-IoC.html" class="nav-link">
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/spring-mvc/001-helloworld.html" class="nav-link">
+  Spring MVC
+</a></li><li class="dropdown-item"><!----> <a href="/spring-boot/02-Java代码配置.html" class="nav-link">
+  Spring Boot
+</a></li><li class="dropdown-item"><!----> <a href="/shiro/01-基础.html" class="nav-link">
+  Shiro
+</a></li><li class="dropdown-item"><!----> <a href="/restful/01-基础.html" class="nav-link">
+  RESTful API
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vue-00-devtool.html" class="nav-link">
+  Vue（上）
+</a></li><li class="dropdown-item"><!----> <a href="/vue-cli/vue-cli-01.html" class="nav-link">
+  Vue（下）
+</a></li><li class="dropdown-item"><!----> <a href="/nginx/01-前后端分离.html" class="nav-link">
+  Nginx
+</a></li><li class="dropdown-item"><!----> <a href="/redis/01-简介.html" class="nav-link">
+  Redis
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="第四阶段" class="dropdown-title"><span class="title">第四阶段</span> <span class="arrow down"></span></button> <button type="button" aria-label="第四阶段" class="mobile-dropdown-title"><span class="title">第四阶段</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/spring-cloud/00-拆分和restTemplate.html" class="nav-link">
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/rabbitmq/01-简介.html" class="nav-link">
+  RabbitMQ
+</a></li><li class="dropdown-item"><!----> <a href="/es/00-素材.html" class="nav-link">
+  ElasticSearch
+</a></li><li class="dropdown-item"><!----> <a href="/spring-data-jpa/01.基本概念.html" class="nav-link">
+  Spring Data JPA
+</a></li><li class="dropdown-item"><!----> <a href="/other/01-SnowFlake.html" class="nav-link">
+  其它
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发环境和软件安装" class="dropdown-title"><span class="title">开发环境和软件安装</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发环境和软件安装" class="mobile-dropdown-title"><span class="title">开发环境和软件安装</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/windows/01-IDEA.html" class="nav-link">
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/linux/00-预备知识.html" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/git/000-安装与配置.html" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/docker/01-简介和安装.html" class="nav-link">
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/docker-install/01-mysql.html" class="nav-link">
+  Docker 安装软件
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试复习" class="dropdown-title"><span class="title">面试复习</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试复习" class="mobile-dropdown-title"><span class="title">面试复习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/jvm/01-JVM内存布局.html" class="nav-link">
+  Java 虚拟机
+</a></li><li class="dropdown-item"><!----> <a href="/interview-questions/01-ArraySort.html" class="nav-link">
+  面试题专题
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具库" class="dropdown-title"><span class="title">工具库</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具库" class="mobile-dropdown-title"><span class="title">工具库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/utility/spring-utils/01-top4.html" class="nav-link">
+  Spring 内置工具库
+</a></li><li class="dropdown-item"><!----> <a href="/utility/guava/01-字符串工具类.html" class="nav-link">
+  Guava 工具库
+</a></li><li class="dropdown-item"><!----> <a href="/utility/3rd/01-slf4j.html" class="nav-link">
+  其它工具库
+</a></li><li class="dropdown-item"><!----> <a href="/gist/01-jdbc.html" class="nav-link">
+  各种模板
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="第一阶段" class="dropdown-title"><span class="title">第一阶段</span> <span class="arrow down"></span></button> <button type="button" aria-label="第一阶段" class="mobile-dropdown-title"><span class="title">第一阶段</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/01-Java语法汇总.html" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/java-thread/01-base.html" class="nav-link">
+  Java 多线程
+</a></li><li class="dropdown-item"><!----> <a href="/java8/02-lambda.html" class="nav-link">
+  JDK8 新特性
+</a></li><li class="dropdown-item"><!----> <a href="/mysql/01-操作Database.html" class="nav-link">
+  MySQL 数据库
+</a></li><li class="dropdown-item"><!----> <a href="/jdbc/01-JDBC基础.html" class="nav-link">
+  JDBC 操作数据库
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="第二阶段" class="dropdown-title"><span class="title">第二阶段</span> <span class="arrow down"></span></button> <button type="button" aria-label="第二阶段" class="mobile-dropdown-title"><span class="title">第二阶段</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/html/01-基本概念和结构.html" class="nav-link">
+  HTML
+</a></li><li class="dropdown-item"><!----> <a href="/css/01-基本概念.html" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/js/01-基础.html" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/servlet/00-HTTP概述.html" class="nav-link">
+  Servlet
+</a></li><li class="dropdown-item"><!----> <a href="/junit/01-基础.html" class="nav-link">
+  JUnit
+</a></li><li class="dropdown-item"><!----> <a href="/mybatis/01-basics.html" class="nav-link">
+  Mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/ajax/01-基础.html" class="nav-link">
+  AJAX 请求及相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="第三阶段" class="dropdown-title"><span class="title">第三阶段</span> <span class="arrow down"></span></button> <button type="button" aria-label="第三阶段" class="mobile-dropdown-title"><span class="title">第三阶段</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/maven/001-基本概念.html" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/spring/01-IoC.html" class="nav-link">
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/spring-mvc/001-helloworld.html" class="nav-link">
+  Spring MVC
+</a></li><li class="dropdown-item"><!----> <a href="/spring-boot/02-Java代码配置.html" class="nav-link">
+  Spring Boot
+</a></li><li class="dropdown-item"><!----> <a href="/shiro/01-基础.html" class="nav-link">
+  Shiro
+</a></li><li class="dropdown-item"><!----> <a href="/restful/01-基础.html" class="nav-link">
+  RESTful API
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vue-00-devtool.html" class="nav-link">
+  Vue（上）
+</a></li><li class="dropdown-item"><!----> <a href="/vue-cli/vue-cli-01.html" class="nav-link">
+  Vue（下）
+</a></li><li class="dropdown-item"><!----> <a href="/nginx/01-前后端分离.html" class="nav-link">
+  Nginx
+</a></li><li class="dropdown-item"><!----> <a href="/redis/01-简介.html" class="nav-link">
+  Redis
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="第四阶段" class="dropdown-title"><span class="title">第四阶段</span> <span class="arrow down"></span></button> <button type="button" aria-label="第四阶段" class="mobile-dropdown-title"><span class="title">第四阶段</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/spring-cloud/00-拆分和restTemplate.html" class="nav-link">
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/rabbitmq/01-简介.html" class="nav-link">
+  RabbitMQ
+</a></li><li class="dropdown-item"><!----> <a href="/es/00-素材.html" class="nav-link">
+  ElasticSearch
+</a></li><li class="dropdown-item"><!----> <a href="/spring-data-jpa/01.基本概念.html" class="nav-link">
+  Spring Data JPA
+</a></li><li class="dropdown-item"><!----> <a href="/other/01-SnowFlake.html" class="nav-link">
+  其它
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发环境和软件安装" class="dropdown-title"><span class="title">开发环境和软件安装</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发环境和软件安装" class="mobile-dropdown-title"><span class="title">开发环境和软件安装</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/windows/01-IDEA.html" class="nav-link">
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/linux/00-预备知识.html" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/git/000-安装与配置.html" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/docker/01-简介和安装.html" class="nav-link">
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/docker-install/01-mysql.html" class="nav-link">
+  Docker 安装软件
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试复习" class="dropdown-title"><span class="title">面试复习</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试复习" class="mobile-dropdown-title"><span class="title">面试复习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/jvm/01-JVM内存布局.html" class="nav-link">
+  Java 虚拟机
+</a></li><li class="dropdown-item"><!----> <a href="/interview-questions/01-ArraySort.html" class="nav-link">
+  面试题专题
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Redis</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/redis/01-简介.html" class="sidebar-link">Redis 简介</a></li><li><a href="/redis/02-Redis命令.html" class="active sidebar-link">Redis 常用命令</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#通用命令" class="sidebar-link">通用命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#字符串命令" class="sidebar-link">字符串命令</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#set-命令" class="sidebar-link">set 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#带参数的-set-命令" class="sidebar-link">带参数的 set 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#get" class="sidebar-link">get</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#del-命令" class="sidebar-link">del 命令</a></li></ul></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#哈希命令" class="sidebar-link">哈希命令</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#hset-命令" class="sidebar-link">hset 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#hsetnx-命令" class="sidebar-link">hsetnx 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#hmset-命令" class="sidebar-link">Hmset 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#hdel" class="sidebar-link">Hdel</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#hexists" class="sidebar-link">Hexists</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#hget" class="sidebar-link">Hget</a></li></ul></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#链表命令" class="sidebar-link">链表命令</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#lpush-命令" class="sidebar-link">Lpush 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#rpush-命令" class="sidebar-link">Rpush 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#lindex-命令" class="sidebar-link">Lindex 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#llen-命令" class="sidebar-link">Llen 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#lpop-命令" class="sidebar-link">Lpop 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#rpop-命令" class="sidebar-link">Rpop 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#linsert-命令" class="sidebar-link">Linsert 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#lrange-命令" class="sidebar-link">Lrange 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#lrem-命令" class="sidebar-link">Lrem 命令</a></li></ul></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#集合-set-命令" class="sidebar-link">集合（Set）命令</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#sadd-命令" class="sidebar-link">Sadd 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#scard-命令" class="sidebar-link">Scard 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#sismember-命令" class="sidebar-link">Sismember 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#smembers-命令" class="sidebar-link">Smembers 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#srandmember-命令" class="sidebar-link">Srandmember 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#smove-命令" class="sidebar-link">Smove 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#spop-命令" class="sidebar-link">Spop 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#srem-命令" class="sidebar-link">Srem 命令</a></li></ul></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#有序集合命令" class="sidebar-link">有序集合命令</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#zadd-命令" class="sidebar-link">Zadd 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#zcard-命令" class="sidebar-link">Zcard 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#zcount-命令" class="sidebar-link">Zcount 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#zincrby-命令" class="sidebar-link">Zincrby 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#zrem-命令" class="sidebar-link">Zrem 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#zrange-命令" class="sidebar-link">Zrange 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#zrank-命令" class="sidebar-link">Zrank 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#zrevrank-命令" class="sidebar-link">Zrevrank 命令</a></li><li class="sidebar-sub-header"><a href="/redis/02-Redis命令.html#zscore-命令" class="sidebar-link">Zscore 命令</a></li></ul></li></ul></li><li><a href="/redis/03-spring-boot.html" class="sidebar-link">SpringBoot 中使用 Redis</a></li><li><a href="/redis/04-缓存数据库一致性.html" class="sidebar-link">缓存与数据库一致性</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="redis-常用命令"><a href="#redis-常用命令" class="header-anchor">#</a> Redis 常用命令</h1> <h2 id="通用命令"><a href="#通用命令" class="header-anchor">#</a> 通用命令</h2> <table><thead><tr><th style="text-align:center;">#</th> <th style="text-align:left;">命令</th> <th style="text-align:left;">说明</th></tr></thead> <tbody><tr><td style="text-align:center;">1</td> <td style="text-align:left;">keys</td> <td style="text-align:left;">查看所有的 key</td></tr> <tr><td style="text-align:center;">2</td> <td style="text-align:left;">dbsize</td> <td style="text-align:left;">统计键值对的数量</td></tr> <tr><td style="text-align:center;">3</td> <td style="text-align:left;">exists</td> <td style="text-align:left;">判断指定键值对是否存在</td></tr> <tr><td style="text-align:center;">4</td> <td style="text-align:left;">del</td> <td style="text-align:left;">删除指定键值对</td></tr> <tr><td style="text-align:center;">5</td> <td style="text-align:left;">expire</td> <td style="text-align:left;">设置过期自动删除</td></tr> <tr><td style="text-align:center;">6</td> <td style="text-align:left;">type</td> <td style="text-align:left;">查看键值对数据模型类型</td></tr></tbody></table> <hr> <ol><li><p>keys 命令</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> keys *
+</code></pre></div><p>遍历所有的 key。keys 命令一般不在生产环境中使用<small>（因为生产环境中键值对极多）</small></p></li> <li><p>dbsize 命令</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> dbsize
+</code></pre></div><p>计算 key 的总数。</p></li> <li><p>exists 命令</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> exists <span class="token operator">&lt;</span>key<span class="token operator">&gt;</span>
+</code></pre></div><p>存在则返回 1，不存在返回 0</p></li> <li><p>del 命令</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> del <span class="token operator">&lt;</span>key<span class="token operator">&gt;</span> <span class="token punctuation">[</span> <span class="token operator">&lt;</span>key<span class="token operator">&gt;</span> <span class="token punctuation">..</span>. <span class="token punctuation">]</span>
+</code></pre></div><p>删除指定的键值对</p></li> <li><p>expire 命令</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> expire <span class="token operator">&lt;</span>key<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>seconds<span class="token operator">&gt;</span>
+</code></pre></div><p>key 在 seconds 秒后过期。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> ttl <span class="token operator">&lt;</span>key<span class="token operator">&gt;</span>
+</code></pre></div><p>查询 key 的剩余过期时间。返回 -1 表示没有过期设置；返回 -2 表示过期删除。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> persist key
+</code></pre></div><p>去掉 key 的过期设置</p></li> <li><p>type 命令</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">type</span> <span class="token operator">&lt;</span>key<span class="token operator">&gt;</span>
+</code></pre></div><p>返回 key 的数据模型，即值的类型。</p></li></ol> <h2 id="字符串命令"><a href="#字符串命令" class="header-anchor">#</a> 字符串命令</h2> <p>Redis 中的键<small>（key）</small>都是字符串，但是值可以有多种类型<small>（常见五种）</small>。</p> <p>字符串类型的值（Value）最大不能超过 512M<small>（已经足够大了）</small>。</p> <p>一般情况下，考虑到并发、流量等问题，通常字符串类型的值最大也只是『百K』级别。</p> <p>主要命令：</p> <table><thead><tr><th style="text-align:left;">命令</th> <th style="text-align:left;">语法</th></tr></thead> <tbody><tr><td style="text-align:left;">get</td> <td style="text-align:left;"><code>get &lt;key&gt;</code></td></tr> <tr><td style="text-align:left;">set</td> <td style="text-align:left;"><code>set &lt;key&gt; &lt;value&gt;</code></td></tr> <tr><td style="text-align:left;">del</td> <td style="text-align:left;"><code>del &lt;key&gt;</code></td></tr></tbody></table> <h3 id="set-命令"><a href="#set-命令" class="header-anchor">#</a> set 命令</h3> <p>set 命令用于新增或更新键值对。具体是新增还是更新，取决于该键值对原本是否存在。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>SET &lt;key&gt; &lt;value&gt;
+</code></pre></div><p>SET 执行成功时返回 OK 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 对不存在的键进行设置</span>
+<span class="token operator">&gt;</span> SET key <span class="token string">&quot;value&quot;</span>
+OK
+    
+<span class="token operator">&gt;</span> GET key
+<span class="token string">&quot;value&quot;</span>
+
+<span class="token comment"># 对已存在的键进行设置</span>
+
+<span class="token operator">&gt;</span> SET key <span class="token string">&quot;new-value&quot;</span>
+OK
+    
+<span class="token operator">&gt;</span> GET key
+<span class="token string">&quot;new-value&quot;</span>
+</code></pre></div><ul><li><p>set 一个『不存在』的 key ，就是『新增』一个键值对；</p></li> <li><p>set 一个『已存在』的 key ，就是『更新』这个键值对。</p></li></ul> <h3 id="带参数的-set-命令"><a href="#带参数的-set-命令" class="header-anchor">#</a> 带参数的 set 命令</h3> <ul><li><p>无论 key 是否存在，都进行设置</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> <span class="token operator">&lt;</span>key<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>val<span class="token operator">&gt;</span>
+</code></pre></div></li> <li><p>key 不存在，才设置；等同于 <strong>setnx &lt;key&gt; &lt;val&gt;</strong> 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> <span class="token operator">&lt;</span>key<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>val<span class="token operator">&gt;</span> NX
+</code></pre></div><p>这是真正意义上的『新增』操作，因为要求之前是必须没有的。</p></li> <li><p>key 存在，才设置。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> <span class="token operator">&lt;</span>key<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>val<span class="token operator">&gt;</span> XX
+</code></pre></div><p>这是真正意义上的『更新』操作，因为要求之前是必须有的。</p></li></ul> <h3 id="get"><a href="#get" class="header-anchor">#</a> get</h3> <p>Get 命令用于获取某个键值对的值<small>（String）</small>，具体是哪个键值对由参数 <code>key</code> 决定。</p> <p>如果键值对不存在，则返回 <code>nil</code> 。</p> <p>如果键值对的值部分并非字符串<small>（String）</small>类型，则返回一个错误。<small>简而言之，redis 在告诉你 get 命令用错地方了。</small></p> <p>语法：</p> <div class="language- extra-class"><pre><code>get &lt;key&gt;
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 对不存在的 *key* 或字符串类型 *key* 进行 Get</span>
+<span class="token operator">&gt;</span> GET db
+<span class="token punctuation">(</span>nil<span class="token punctuation">)</span>
+    
+<span class="token operator">&gt;</span> SET db redis
+OK
+    
+<span class="token operator">&gt;</span> GET db
+<span class="token string">&quot;redis&quot;</span>
+
+<span class="token comment"># 对不是字符串类型的 *key* 进行 GET</span>
+<span class="token operator">&gt;</span> DEL db
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+    
+<span class="token comment"># 在 redis 中添加一个 list 类型的键值对</span>
+<span class="token operator">&gt;</span> LPUSH db redis mongodb mysql
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">3</span>
+    
+<span class="token operator">&gt;</span> GET db
+<span class="token punctuation">(</span>error<span class="token punctuation">)</span> ERR Operation against a key holding the wrong kind of value
+</code></pre></div><h3 id="del-命令"><a href="#del-命令" class="header-anchor">#</a> del 命令</h3> <p>del 命令用于删除某个键值对。</p> <p>如果 <em>key</em> 代表的键值对不存在，则该操作无任何效果。</p> <p>实际上 del 命令是一个通用命令，各种类型结构都有这个命令。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>del &lt;key&gt;
+</code></pre></div><p>del 命令将返回被删除的键值对的数量。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> SET w3ckey redis
+OK
+
+<span class="token comment"># 删除已创建的 *key* 。</span>
+<span class="token operator">&gt;</span> DEL w3ckey
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+</code></pre></div><h2 id="哈希命令"><a href="#哈希命令" class="header-anchor">#</a> 哈希命令</h2> <p>Hash 结构与 String 结构有一定的相似性。</p> <p>在 Hash 结构中，键值对的值又分为两个部分：<strong>field</strong> 和 <strong>value</strong> 。例如：</p> <ul><li><p>key：<strong>users:1</strong></p> <ul><li><p>field: <strong>id</strong> ，value: ...</p></li> <li><p>field: <strong>name</strong> ，value: ...</p></li> <li><p>field: <strong>age</strong> ，value: ...</p></li> <li><p>field: <strong>address</strong> ，value: ...</p></li> <li><p>field: <strong>email</strong> ，value: ...</p></li></ul></li></ul> <p>Hash 类型的价值在于，在 Redis 中存储了一个对象的信息后，可以单独更新该对象的某个属性的值，而不需要：取出-更新-序列化-存入 。</p> <p>注意，与数据库中的列不同，Hash 结构中不强求两个键值对中必须有同样数量/名称的 field 。</p> <h3 id="hset-命令"><a href="#hset-命令" class="header-anchor">#</a> hset 命令</h3> <p>hset 命令用于向某个 HashTable 中添加新的键值对 <small><em>field - value</em></small>。至于是哪个哈希表则取决与参数 <em>key</em> 。</p> <p><code>注意</code>，这里有两层键值对。</p> <ul><li><p>首先，整个 Redis 中的数据内容就是一对一对键值对<small>（ key - hashtable ）</small>，其中，每个键值对的值部分都是一个 HashTable<small>（HashTable 是 HashMap 的“高级”版本）</small></p></li> <li><p>其次，HashTable 中存放的又是一对一对的键值对<small>（ filed - value ）</small>。</p></li></ul> <p>如果 <em>哈希表</em> 不存在，这个哈希表会被创建，并添加至 Redis 中，然后再进行 Hset 操作。</p> <p>如果 将要添加进哈希表中的 <em>键值对</em> 已经存在，则该 <em>键值对</em> 的旧值将被覆盖。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>hset key field value 
+</code></pre></div><p>如果 <em>field-value</em> 是哈希表中的一个新建键值对，并且值设置成功，返回 1 。</p> <p>如果在哈希表中 <em>field - value</em> 字段已经存在，则旧值被新值覆盖，返回 0 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> HSET myhash field1 <span class="token string">&quot;foo&quot;</span>
+OK
+<span class="token operator">&gt;</span> HGET myhash field1
+<span class="token string">&quot;foo&quot;</span>
+
+<span class="token comment"># 设置一个新域   </span>
+<span class="token operator">&gt;</span> HSET website google <span class="token string">&quot;www.g.cn&quot;</span>       
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token comment"># 覆盖一个旧域   </span>
+<span class="token operator">&gt;</span>HSET website google <span class="token string">&quot;www.google.com&quot;</span> 
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
+</code></pre></div><h3 id="hsetnx-命令"><a href="#hsetnx-命令" class="header-anchor">#</a> hsetnx 命令</h3> <p>Hsetnx 命令用于向某个哈希表中添加新的 <em>field - value</em> ，具体是哪个 HashTable 取决于参数 <em>key</em> 。</p> <p>这里要求 <em>filed - value</em> 原本不存在于该 HashTable 中 。</p> <p>如果 <em>filed - value</em> 不存在，则这个 <em>filed - value</em> 将被添加到 HashTable 中。</p> <p>如果 <em>filed - value</em> 已经存在于哈希表中，操作无效。</p> <p>如果 HashTable 不存在，一个新哈希表将被创建，并执行 HSETNX 命令。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>hsetnx &lt;key&gt; &lt;field&gt; &lt;value&gt;
+</code></pre></div><p>hsetnx 命令设置成功时，返回 1 。如果给定 <em>filed - value</em> 已经存在，则没有操作被执行，返回 0 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># key 或 field 不存在时，才进行设值操作。</span>
+<span class="token operator">&gt;</span> HSETNX myhash field1 <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span> <span class="token comment"># 不存在，操作成功</span>
+
+<span class="token operator">&gt;</span> HSETNX myhash field1 <span class="token string">&quot;bar&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span> <span class="token comment"># 存在，操作失败</span>
+
+<span class="token operator">&gt;</span> HGET myhash field1
+<span class="token string">&quot;foo&quot;</span> <span class="token comment"># 不会有『覆盖』情况出现</span>
+</code></pre></div><h3 id="hmset-命令"><a href="#hmset-命令" class="header-anchor">#</a> Hmset 命令</h3> <p>Hmset 命令用于同时将多个 <em>field - value</em> 设置到某个哈希表中，至于具体是哪个哈希表则取决于参数 <em>key</em> 。</p> <p>如果 <em>field - value</em> 在 HashTable 中已存在，此命令会覆盖其旧值。</p> <p>如果 HashTable 不存在，会创建一个空HashTable，再执行 Hmset 操作。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Hmset &lt;key&gt; &lt;field1&gt; &lt;value1&gt; [field2 value2] ... 
+</code></pre></div><p>如果命令执行成功，返回 OK 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 一次性设置 2 个 filed-value 。</span>
+<span class="token operator">&gt;</span> HSET myhash field1 <span class="token string">&quot;foo&quot;</span> field2 <span class="token string">&quot;bar&quot;</span>
+OK
+</code></pre></div><h3 id="hdel"><a href="#hdel" class="header-anchor">#</a> Hdel</h3> <p>Hdel 命令用于从某个 HashTable 中删除一个或多个 <em>filed - value</em> ，具体从哪个HashTable中删除，取决于参数 <em>key</em> ，具体删除那一个/些个 <em>filed - value</em> 取决于参数 <em>filed1 ...</em> 。</p> <p>不存在的 <em>filed - value</em> 将被忽略。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>HDEL &lt;key&gt; &lt;field1&gt; [ field2 ... ]
+</code></pre></div><p>HDEL 命令返回被成功删除 <em>field - value</em> 的数量，其中不包括被忽略的 <em>filed - value</em> 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> HSET myhash field1 <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> HDEL myhash field1
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> HDEL myhash field2
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
+</code></pre></div><h3 id="hexists"><a href="#hexists" class="header-anchor">#</a> Hexists</h3> <p>Hexists 命令用于查看某个HashTable中是否存在某个 <em>filed - values</em> 。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Hexists key field
+</code></pre></div><p>如果哈希表含有给定 <em>field - value</em> ，返回 1 ； 果哈希表不含有给定 <em>field - value</em> ，返回 0 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> HSET myhash field1 <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> HEXISTS myhash field1
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> HEXISTS myhash field2
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
+</code></pre></div><h3 id="hget"><a href="#hget" class="header-anchor">#</a> Hget</h3> <p>Hget 命令用于返回某个哈希表中某个 <em>field - value</em> 的值。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Hget &lt;key&gt; &lt;field&gt;
+</code></pre></div><p>返回给定 <em>filed - value</em> 的值。如果给定的 HashTable 或 <em>field - value</em> 不存在，则返回 nil 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 字段存在</span>
+<span class="token operator">&gt;</span> HSET site redis redis.com
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+    
+<span class="token operator">&gt;</span> HGET site redis
+<span class="token string">&quot;redis.com&quot;</span>
+
+<span class="token comment"># 字段不存在</span>
+<span class="token operator">&gt;</span> HGET site mysql
+<span class="token punctuation">(</span>nil<span class="token punctuation">)</span>
+</code></pre></div><h2 id="链表命令"><a href="#链表命令" class="header-anchor">#</a> 链表命令</h2> <h3 id="lpush-命令"><a href="#lpush-命令" class="header-anchor">#</a> Lpush 命令</h3> <table><thead><tr><th style="text-align:left;">增</th> <th style="text-align:left;">删</th> <th style="text-align:left;">改</th> <th style="text-align:left;">查</th></tr></thead> <tbody><tr><td style="text-align:left;">lpush</td> <td style="text-align:left;">lpop</td> <td style="text-align:left;">lset</td> <td style="text-align:left;">lrange</td></tr> <tr><td style="text-align:left;">linsert</td> <td style="text-align:left;">rpop</td> <td style="text-align:left;">lindex</td> <td style="text-align:left;"></td></tr> <tr><td style="text-align:left;"></td> <td style="text-align:left;">lrem</td> <td style="text-align:left;">llen</td> <td style="text-align:left;"></td></tr> <tr><td style="text-align:left;"></td> <td style="text-align:left;">ltrim</td> <td style="text-align:left;"></td> <td style="text-align:left;"></td></tr></tbody></table> <p>Lpush 命令将一个或多个值插入到某个列表头部<small>（左侧）</small>，具体是哪个链表由参数 <em>key</em> 决定。</p> <p>如果链表不存在，一个空列表会被创建，而后再执行 Lpush 操作。</p> <p>当 key 对应的类型不是列表类型时，返回一个错误。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Lpush &lt;key&gt; &lt;value&gt; [ value ... ]
+</code></pre></div><p>执行 Lpush 命令后，将返回列表的长度。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> LPUSH <span class="token number">9527</span> <span class="token number">10</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> LPUSH <span class="token number">9527</span> <span class="token number">20</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
+
+<span class="token operator">&gt;</span> LRANGE <span class="token number">9527</span> <span class="token number">0</span> -1
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;10&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;20&quot;</span>
+</code></pre></div><h3 id="rpush-命令"><a href="#rpush-命令" class="header-anchor">#</a> Rpush 命令</h3> <p>Rpush 命令用于将一个或多个值插入到某个列表的尾部（最右边），具体是哪个列表由参数 <em>key</em> 决定。</p> <p>如果列表不存在，一个空列表会被创建，然后再执行 Rpush 操作。</p> <p>当 key 对应的类型不是列表类型时，返回一个错误。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Rpush &lt;key&gt; &lt;value&gt; [ value ... ]
+</code></pre></div><p>执行 Rpush 操作后，将返回列表的长度。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> RPUSH <span class="token number">9528</span> <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> RPUSH <span class="token number">9528</span> <span class="token string">&quot;world&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
+
+<span class="token operator">&gt;</span> RPUSH <span class="token number">9528</span> <span class="token string">&quot;goodbye&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">3</span>
+
+<span class="token operator">&gt;</span> LRANGE <span class="token number">9528</span> <span class="token number">0</span> -1
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;hello&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;world&quot;</span>
+<span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">&quot;goodbye&quot;</span>
+</code></pre></div><h3 id="lindex-命令"><a href="#lindex-命令" class="header-anchor">#</a> Lindex 命令</h3> <p>Lindex 命令用于通过索引获取某个列表中的元素，具体是哪个列表由参数 <em>key</em> 决定。</p> <p>索引都是从头向尾（从左到右）的方向算，从 0 开始。</p> <p>你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Lindex &lt;key&gt; &lt;index&gt;
+</code></pre></div><p>Lindex 命令返回列表中下标所指定的位置的值。如果指定索引值不在列表的区间范围内，返回 nil 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> LPUSH list_1 <span class="token string">&quot;World&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+    
+<span class="token operator">&gt;</span> LPUSH list_1 <span class="token string">&quot;Hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
+    
+<span class="token operator">&gt;</span> LINDEX list_1 <span class="token number">0</span>
+<span class="token string">&quot;Hello&quot;</span>
+    
+<span class="token operator">&gt;</span> LINDEX list_1 -1
+<span class="token string">&quot;World&quot;</span>
+    
+<span class="token operator">&gt;</span> LINDEX list_1 <span class="token number">3</span>        <span class="token comment"># index不在 mylist 的区间范围内</span>
+<span class="token punctuation">(</span>nil<span class="token punctuation">)</span>
+</code></pre></div><h3 id="llen-命令"><a href="#llen-命令" class="header-anchor">#</a> Llen 命令</h3> <p>Llen 命令用于返回某个列表的长度。</p> <p>如果列表不存在，则返回 0 。</p> <p>如果 key 对应的不是列表类型，则返回一个错误。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Llen &lt;key&gt;
+</code></pre></div><p>Llen 返回列表的长度。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> RPUSH list1 <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> RPUSH list1 <span class="token string">&quot;bar&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
+
+<span class="token operator">&gt;</span> LLEN list1
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
+</code></pre></div><h3 id="lpop-命令"><a href="#lpop-命令" class="header-anchor">#</a> Lpop 命令</h3> <p>Lpop 命令用于移除，并返回某个列表的第一个元素（最左侧的元素）。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Lpop &lt;key&gt;
+</code></pre></div><p>Lpop 将返回列表的第一个元素；当列表不存在时，返回 nil 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> RPUSH list1 <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> RPUSH list1 <span class="token string">&quot;bar&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
+
+<span class="token operator">&gt;</span> LPOP list1
+<span class="token string">&quot;foo&quot;</span>
+</code></pre></div><h3 id="rpop-命令"><a href="#rpop-命令" class="header-anchor">#</a> Rpop 命令</h3> <p>Rpop 命令用于移除，并返回某个列表的最后一个元素（最右侧的元素）。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>RPOP key
+</code></pre></div><p>Rpop 命令将会返回列表的最后一个元素；当列表不存在时，返回 nil 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> RPUSH mylist <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> RPUSH mylist <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
+
+<span class="token operator">&gt;</span> RPUSH mylist <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">3</span>
+
+<span class="token operator">&gt;</span> RPUSH mylist <span class="token string">&quot;bar&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">4</span>
+
+<span class="token operator">&gt;</span> RPOP mylist
+OK
+
+<span class="token operator">&gt;</span> LRANGE mylist <span class="token number">0</span> -1
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;hello&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;hello&quot;</span>
+<span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">&quot;foo&quot;</span>
+</code></pre></div><h3 id="linsert-命令"><a href="#linsert-命令" class="header-anchor">#</a> Linsert 命令</h3> <p>Linsert 命令用于在某个列表的元素（锚点元素）前或者后插入元素。</p> <p>当列表不存在时，被视为空列表，不执行任何操作。</p> <p>如果 key 对应的不是列表类型，返回一个错误。</p> <p>当指定的锚点元素不存在于列表中时，不执行任何操作。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Linsert &lt;key&gt; [before | after] &lt;pivot&gt; &lt;value&gt;
+</code></pre></div><p>如果 Linsert 命令执行成功，返回插入操作完成之后，列表的长度；如果没有找到指定元素 ，返回 -1；如果类表不存在或为空列表，返回 0 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> RPUSH list1 <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> RPUSH list1 <span class="token string">&quot;bar&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
+
+<span class="token operator">&gt;</span> LINSERT list1 BEFORE <span class="token string">&quot;bar&quot;</span> <span class="token string">&quot;Yes&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">3</span>
+
+<span class="token operator">&gt;</span> LRANGE mylist <span class="token number">0</span> -1
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;foo&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;Yes&quot;</span>
+<span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">&quot;bar&quot;</span>
+</code></pre></div><h3 id="lrange-命令"><a href="#lrange-命令" class="header-anchor">#</a> Lrange 命令</h3> <p>Lrange 返回某个列表中指定区间内的元素，区间以参数 <em>start</em> 和 <em>end</em> 指定。其中 0 表示列表的第一个元素， 1 表示列表的第二个元素，以此类推。</p> <p>你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Lrange &lt;key&gt; &lt;start&gt; &lt;end&gt;
+</code></pre></div><p>Lrange 命令返回一个列表，包含指定区间内的元素。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> LPUSH list1 <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> LPUSH list1 <span class="token string">&quot;bar&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
+
+<span class="token operator">&gt;</span> LPUSHX list1 <span class="token string">&quot;bar&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
+
+<span class="token operator">&gt;</span> LRANGE list1 <span class="token number">0</span> -1
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;foo&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;bar&quot;</span>
+<span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">&quot;bar&quot;</span>
+</code></pre></div><h3 id="lrem-命令"><a href="#lrem-命令" class="header-anchor">#</a> Lrem 命令</h3> <p>Lrem 根据参数 <em>count</em> 的值，移除某个列表中与参数 <em>value</em> 相等的元素。</p> <p><em>count</em> 的值可以是以下几种：</p> <ul><li><p>count &gt; 0 : 从表头开始向表尾搜索，移除与 VALUE 相等的元素，数量为 <em>count</em> 。</p></li> <li><p>count &lt; 0 : 从表尾开始向表头搜索，移除与 VALUE 相等的元素，数量为 <em>count</em> 的绝对值。</p></li> <li><p>count = 0 : 移除表中所有与 VALUE 相等的值。</p></li></ul> <p>语法：</p> <div class="language- extra-class"><pre><code>Lrem &lt;key&gt; &lt;count&gt; &lt;value&gt;
+</code></pre></div><p>Lrem 命令返回被移除元素的数量。 列表不存在时返回 0 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> RPUSH mylist <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> RPUSH mylist <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
+
+<span class="token operator">&gt;</span> RPUSH mylist <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">3</span>
+
+<span class="token operator">&gt;</span> RPUSH mylist <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">4</span>
+
+<span class="token operator">&gt;</span> LREM mylist -2 <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
+</code></pre></div><h2 id="集合-set-命令"><a href="#集合-set-命令" class="header-anchor">#</a> 集合（Set）命令</h2> <p>特点：</p> <ul><li>无序</li> <li>无重复</li> <li>集合间操作</li></ul> <table><thead><tr><th style="text-align:left;">集合内 API</th> <th style="text-align:left;">集合间 API</th></tr></thead> <tbody><tr><td style="text-align:left;">sadd</td> <td style="text-align:left;">sdiff</td></tr> <tr><td style="text-align:left;">srem</td> <td style="text-align:left;">sinter</td></tr> <tr><td style="text-align:left;">scard</td> <td style="text-align:left;">sunion</td></tr> <tr><td style="text-align:left;">sismember</td> <td style="text-align:left;"></td></tr> <tr><td style="text-align:left;">srandmember</td> <td style="text-align:left;"></td></tr> <tr><td style="text-align:left;">smembers</td> <td style="text-align:left;"></td></tr> <tr><td style="text-align:left;">spop</td> <td style="text-align:left;"></td></tr></tbody></table> <h3 id="sadd-命令"><a href="#sadd-命令" class="header-anchor">#</a> Sadd 命令</h3> <p>Sadd 命令将一个或多个成员元素加入到某个集合中，已经存在于集合的成员元素将被忽略。</p> <p>假如集合不存在，则创建一个新的集合，而后再执行 Sadd 操作。</p> <p>当 <em>key</em> 对应的并非集合类型时，返回一个错误。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Sadd &lt;key&gt; &lt;value&gt; [ value ... ]
+</code></pre></div><p>Sadd 命令将被添加到集合中的新元素的数量，不包括被忽略的元素。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> SADD myset <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SADD myset <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SADD myset <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
+
+<span class="token operator">&gt;</span> SMEMBERS myset
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;hello&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;foo&quot;</span>
+</code></pre></div><h3 id="scard-命令"><a href="#scard-命令" class="header-anchor">#</a> Scard 命令</h3> <p>Scard 命令返回某个集合中元素的数量。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>SCARD &lt;key&gt;
+</code></pre></div><p>Scard 命令将返回集合中元素的数量；当集合 key 不存在时，返回 0 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> SADD myset <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SADD myset <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SADD myset <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
+
+<span class="token operator">&gt;</span> SCARD myset
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
+</code></pre></div><h3 id="sismember-命令"><a href="#sismember-命令" class="header-anchor">#</a> Sismember 命令</h3> <p>Sismember 命令判断成员元素是否是某个集合的成员。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Sismember &lt;key&gt; &lt;value&gt;
+</code></pre></div><p>如果成员元素是集合的成员，Sismsmber 将返回 1 ；如果成员元素不是集合的成员，或集合不存在，返回 0 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> SADD myset1 <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SISMEMBER myset1 <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SISMEMBER myset1 <span class="token string">&quot;world&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
+</code></pre></div><h3 id="smembers-命令"><a href="#smembers-命令" class="header-anchor">#</a> Smembers 命令</h3> <p>Smembers 命令返回某个集合中的所有的成员。</p> <p>如果集合不存在，则视其为一个空集合。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Smembers &lt;key&gt;
+</code></pre></div><p>Smembers 命令将返回集合中的所有成员。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> SADD myset1 <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SADD myset1 <span class="token string">&quot;world&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SMEMBERS myset1
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;World&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;Hello&quot;</span>
+</code></pre></div><h3 id="srandmember-命令"><a href="#srandmember-命令" class="header-anchor">#</a> Srandmember 命令</h3> <p>Srandmember 命令用于从某个集合中返回一个或多个随机元素。</p> <p>从 Redis 2.6 版本开始， Srandmember 命令接受可选的 <em>count</em> 参数：</p> <p>如果 <em>count</em> 为正数，且小于集合基数，那么命令返回一个包含 <em>count</em> 个元素的数组，数组中的元素各不相同。如果 <em>count</em> 大于等于集合基数，那么返回整个集合。</p> <p>如果 <em>count</em> 为负数，那么命令返回一个数组，数组中的元素可能会重复出现多次，而数组的长度为 count 的绝对值。</p> <p>返回的元素并不会从集合中移除。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Srandmember &lt;key&gt; [ count ]
+</code></pre></div><p>如果没有 <em>count</em> 参数，Srandmember 将返回一个元素；如果提供了 <em>count</em> 参数，那么返回一个数组；如果集合为空，返回空数组；如果集合为空，返回 nil 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> SADD myset1 <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SADD myset1 <span class="token string">&quot;world&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SADD myset1 <span class="token string">&quot;bar&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SRANDMEMBER myset1
+<span class="token string">&quot;bar&quot;</span>
+
+<span class="token operator">&gt;</span> SRANDMEMBER myset1 <span class="token number">2</span>
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;Hello&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;world&quot;</span>
+</code></pre></div><h3 id="smove-命令"><a href="#smove-命令" class="header-anchor">#</a> Smove 命令</h3> <p>Smove 命令将指定成员 <em>member</em> 元素从 <em>source</em> 集合移动到 <em>destination</em> 集合。</p> <p>SMOVE 是原子性操作。</p> <p>如果 source 集合不存在或不包含指定的 member 元素，则 SMOVE 命令不执行任何操作，仅返回 0 。</p> <p>否则， member 元素从 source 集合中被移除，并添加到 destination 集合中去。</p> <p>当 destination 集合已经包含 member 元素时， SMOVE 命令只是简单地将 source 集合中的 member 元素删除。</p> <p>当 source 或 destination 不是集合类型时，返回一个错误。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>SMOVE &lt;source&gt; &lt;destination&gt; &lt;member&gt;
+</code></pre></div><p>如果成员元素被成功移除，SMOVE 返回 1 。</p> <p>如果成员元素不是 source 集合的成员，并且没有任何操作对 destination 集合执行，那么返回 0 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> SADD myset1 <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SADD myset1 <span class="token string">&quot;world&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SADD myset1 <span class="token string">&quot;bar&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SADD myset2 <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SMOVE myset1 myset2 <span class="token string">&quot;bar&quot;</span>
+integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SMEMBERS myset1
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;World&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;Hello&quot;</span>
+
+<span class="token operator">&gt;</span> SMEMBERS myset2
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;foo&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;bar&quot;</span>
+</code></pre></div><h3 id="spop-命令"><a href="#spop-命令" class="header-anchor">#</a> Spop 命令</h3> <p>Spop 命令用于『<strong>随机</strong>』移除，并返回集合中的一个元素。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Spop key
+</code></pre></div><p>被移除的随机元素。 当集合不存在或是空集时，返回 nil 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> SADD myset1 <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SADD myset1 <span class="token string">&quot;world&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SADD myset1 <span class="token string">&quot;bar&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SPOP myset1
+<span class="token string">&quot;bar&quot;</span>
+
+<span class="token operator">&gt;</span> SMEMBERS myset1
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;Hello&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;world&quot;</span>
+</code></pre></div><h3 id="srem-命令"><a href="#srem-命令" class="header-anchor">#</a> Srem 命令</h3> <p>Srem 命令用于移除集合中的一个或多个成员元素，不存在的成员元素会被忽略。</p> <p>当 key 对应的不是集合类型时，返回一个错误。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Srem &lt;key&gt; &lt;member&gt; [ member ... ]
+</code></pre></div><p>Srem 返回被成功、实际移除的元素的数量，不包括被忽略的元素。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> SADD myset1 <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SADD myset1 <span class="token string">&quot;world&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SADD myset1 <span class="token string">&quot;bar&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+<span class="token operator">&gt;</span> SREM myset1 <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> SREM myset1 <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
+
+<span class="token operator">&gt;</span> SMEMBERS myset1
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;bar&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;world&quot;</span>
+</code></pre></div><h2 id="有序集合命令"><a href="#有序集合命令" class="header-anchor">#</a> 有序集合命令</h2> <p>和『哈希』有点类似，有序集合中的键值对的值中，也是有两个部分：<strong>score</strong> 和 <strong>value</strong> 。</p> <p>score 的值决定了与之对应的 value 的顺序</p> <ul><li>zadd</li> <li>zrem</li> <li>zscore</li> <li>zincrby</li> <li>zcard</li> <li>zrange</li> <li>zrangebyscore</li> <li>zcount</li> <li>zremrangebyrank</li> <li>zremrangebyscore</li></ul> <h3 id="zadd-命令"><a href="#zadd-命令" class="header-anchor">#</a> Zadd 命令</h3> <p>Zadd 命令用于将一个或多个成员元素及其分数值加入到某个有序集当中。</p> <p>如果某个成员已经是有序集的成员，那么更新这个成员的分数值。<small>有序集合内部会重新调整成员元素的位置，来保证这个集合的有序性。</small></p> <p>分数值可以是整数值或双精度浮点数。通常使用整数值。</p> <p>如果有序集合不存在，则创建一个空的有序集并执行 Zadd 操作。</p> <p>当 key 所对应的并非有序集类型时，返回一个错误。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Zadd &lt;key&gt; &lt;score&gt; &lt;value&gt; [scoren value ... ]
+</code></pre></div><p>Zadd 命令将被成功添加的新成员的数量，不包括那些被更新的、已经存在的成员。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> ZADD set1 <span class="token number">1</span> <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+<span class="token operator">&gt;</span> ZADD set1 <span class="token number">1</span> <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+<span class="token operator">&gt;</span> ZADD set1 <span class="token number">2</span> <span class="token string">&quot;world&quot;</span> <span class="token number">3</span> <span class="token string">&quot;bar&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
+    
+<span class="token operator">&gt;</span> ZRANGE set1 <span class="token number">0</span> -1 WITHSCORES
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;hello&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;1&quot;</span>
+<span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">&quot;foo&quot;</span>
+<span class="token number">4</span><span class="token punctuation">)</span> <span class="token string">&quot;1&quot;</span>
+<span class="token number">5</span><span class="token punctuation">)</span> <span class="token string">&quot;world&quot;</span>
+<span class="token number">6</span><span class="token punctuation">)</span> <span class="token string">&quot;2&quot;</span>
+<span class="token number">7</span><span class="token punctuation">)</span> <span class="token string">&quot;bar&quot;</span>
+<span class="token number">8</span><span class="token punctuation">)</span> <span class="token string">&quot;3&quot;</span>
+</code></pre></div><h3 id="zcard-命令"><a href="#zcard-命令" class="header-anchor">#</a> Zcard 命令</h3> <p>Zcard 命令用于计算某个集合中元素的数量。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Zcard &lt;key&gt;
+</code></pre></div><p>当集合存在时，Zcard 返回有序集的基数；当集合不存在时，返回 0 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> ZADD myset <span class="token number">1</span> <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> ZADD myset <span class="token number">1</span> <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> ZADD myset <span class="token number">2</span> <span class="token string">&quot;world&quot;</span> <span class="token number">3</span> <span class="token string">&quot;bar&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
+
+<span class="token operator">&gt;</span> ZCARD myzset
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">4</span>
+</code></pre></div><h3 id="zcount-命令"><a href="#zcount-命令" class="header-anchor">#</a> Zcount 命令</h3> <p>Zcount 命令用于计算某有序集合中指定分数区间的成员数量。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Zcount &lt;key&gt; &lt;min&gt; &lt;max&gt;
+</code></pre></div><p>Zcount 返回分数值在 <em>min</em> 和 <em>max</em> 之间的成员的数量。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> ZADD myzset <span class="token number">1</span> <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> ZADD myzset <span class="token number">1</span> <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> ZADD myzset <span class="token number">2</span> <span class="token string">&quot;world&quot;</span> <span class="token number">3</span> <span class="token string">&quot;bar&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
+
+<span class="token operator">&gt;</span> ZCOUNT myzset <span class="token number">1</span> <span class="token number">3</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">4</span>
+</code></pre></div><h3 id="zincrby-命令"><a href="#zincrby-命令" class="header-anchor">#</a> Zincrby 命令</h3> <p>Zincrby 命令对某有序集合中指定成员的分数加上增量 <em>increment</em></p> <p>可以通过传递一个负数值 <em>increment</em> ，让分数减去相应的值，比如 ZINCRBY key -5 member ，就是让 member 的 score 值减去 5 。</p> <p>当有序集合不存在，或有序集合中不存在指定分数时， Zincrby 等同于 Zadd 。</p> <p>当 key 对应的不是有序集时，返回一个错误。</p> <p>分数值可以是整数值或双精度浮点数。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Zincrby &lt;key&gt; &lt;increment&gt; &lt;member&gt;
+</code></pre></div><p>Zincrby 命令返回参数 <code>member</code> 的新的分数值<small>（以字符串形式表示）</small>。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> ZADD myzset <span class="token number">1</span> <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> ZADD myzset <span class="token number">1</span> <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> ZINCRBY myzset <span class="token number">2</span> <span class="token string">&quot;hello&quot;</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">3</span>
+
+<span class="token operator">&gt;</span> ZRANGE myzset <span class="token number">0</span> -1 WITHSCORES
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;foo&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;2&quot;</span>
+<span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">&quot;hello&quot;</span>
+<span class="token number">4</span><span class="token punctuation">)</span> <span class="token string">&quot;3&quot;</span>
+</code></pre></div><h3 id="zrem-命令"><a href="#zrem-命令" class="header-anchor">#</a> Zrem 命令</h3> <p>Zrem 命令用于移除某个有序集中的一个或多个成员，不存在的成员将被忽略。</p> <p>如果 key 对应的并非是有序集类型，则返回一个错误。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Zrem &lt;key&gt; &lt;member&gt;
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 基本示例</span>
+<span class="token operator">&gt;</span> ZRANGE page_rank <span class="token number">0</span> -1 WITHSCORES
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;bing.com&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;8&quot;</span>
+<span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">&quot;baidu.com&quot;</span>
+<span class="token number">4</span><span class="token punctuation">)</span> <span class="token string">&quot;9&quot;</span>
+<span class="token number">5</span><span class="token punctuation">)</span> <span class="token string">&quot;google.com&quot;</span>
+<span class="token number">6</span><span class="token punctuation">)</span> <span class="token string">&quot;10&quot;</span>
+
+<span class="token comment"># 移除单个元素</span>
+<span class="token operator">&gt;</span> ZREM page_rank google.com
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+    
+<span class="token operator">&gt;</span> ZRANGE page_rank <span class="token number">0</span> -1 WITHSCORES
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;bing.com&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;8&quot;</span>
+<span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">&quot;baidu.com&quot;</span>
+<span class="token number">4</span><span class="token punctuation">)</span> <span class="token string">&quot;9&quot;</span>
+
+<span class="token comment"># 移除多个元素</span>
+<span class="token operator">&gt;</span> ZREM page_rank baidu.com bing.com
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
+
+<span class="token operator">&gt;</span> ZRANGE page_rank <span class="token number">0</span> -1 WITHSCORES
+<span class="token punctuation">(</span>empty list or <span class="token builtin class-name">set</span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># 移除不存在元素</span>
+<span class="token operator">&gt;</span> ZREM page_rank non-exists-element
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
+</code></pre></div><h3 id="zrange-命令"><a href="#zrange-命令" class="header-anchor">#</a> Zrange 命令</h3> <p>Zrange 返回某有序集中，指定区间内的成员。</p> <p>如果需要逆序显示，请使用 Zrevrange 命令。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Zrange &lt;key&gt; &lt;start&gt; &lt;stop&gt; [ WITHSCORES ]
+</code></pre></div><p>Zrange 命令将指定区间内，带有分数值<small>（可选）</small>的有序集成员的列表。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 显示整个有序集成员</span>
+<span class="token operator">&gt;</span> ZRANGE salary <span class="token number">0</span> -1 WITHSCORES
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;jack&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;3500&quot;</span>
+<span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">&quot;tom&quot;</span>
+<span class="token number">4</span><span class="token punctuation">)</span> <span class="token string">&quot;5000&quot;</span>
+<span class="token number">5</span><span class="token punctuation">)</span> <span class="token string">&quot;boss&quot;</span>
+<span class="token number">6</span><span class="token punctuation">)</span> <span class="token string">&quot;10086&quot;</span>
+
+<span class="token comment"># 显示有序集下标区间 1 至 2 的成员</span>
+<span class="token operator">&gt;</span> ZRANGE salary <span class="token number">1</span> <span class="token number">2</span> WITHSCORES
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;tom&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;5000&quot;</span>
+<span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">&quot;boss&quot;</span>
+<span class="token number">4</span><span class="token punctuation">)</span> <span class="token string">&quot;10086&quot;</span>
+
+<span class="token comment"># 测试 end 下标超出最大下标时的情况</span>
+<span class="token operator">&gt;</span> ZRANGE salary <span class="token number">0</span> <span class="token number">200000</span> WITHSCORES
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;jack&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;3500&quot;</span>
+<span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">&quot;tom&quot;</span>
+<span class="token number">4</span><span class="token punctuation">)</span> <span class="token string">&quot;5000&quot;</span>
+<span class="token number">5</span><span class="token punctuation">)</span> <span class="token string">&quot;boss&quot;</span>
+<span class="token number">6</span><span class="token punctuation">)</span> <span class="token string">&quot;10086&quot;</span>
+
+<span class="token comment"># 测试当给定区间不存在于有序集时的情况</span>
+<span class="token operator">&gt;</span> ZRANGE salary <span class="token number">200000</span> <span class="token number">3000000</span> WITHSCORES
+<span class="token punctuation">(</span>empty list or <span class="token builtin class-name">set</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="zrank-命令"><a href="#zrank-命令" class="header-anchor">#</a> Zrank 命令</h3> <p>Zrank 返回有序集中指定成员的排名。其中有序集成员按分数值递增<small>（从小到大）</small>顺序排列。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>ZRANK &lt;key&gt; &lt;member&gt;
+</code></pre></div><p>如果成员是有序集的成员，ZRANK 返回 member 的排名；如果成员不是有序集的成员，返回 nil 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 显示所有成员及其 score 值</span>
+<span class="token operator">&gt;</span> ZRANGE salary <span class="token number">0</span> -1 WITHSCORES
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;peter&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;3500&quot;</span>
+<span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">&quot;tom&quot;</span>
+<span class="token number">4</span><span class="token punctuation">)</span> <span class="token string">&quot;4000&quot;</span>
+<span class="token number">5</span><span class="token punctuation">)</span> <span class="token string">&quot;jack&quot;</span>
+<span class="token number">6</span><span class="token punctuation">)</span> <span class="token string">&quot;5000&quot;</span>
+
+<span class="token comment"># 显示 tom 的薪水排名，第二</span>
+<span class="token operator">&gt;</span> ZRANK salary tom
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+</code></pre></div><h3 id="zrevrank-命令"><a href="#zrevrank-命令" class="header-anchor">#</a> Zrevrank 命令</h3> <p>Zrevrank 命令返回有序集中成员的排名。其中有序集成员按分数值降序排序。</p> <p>使用 Zrank 命令可以获得成员按分数值升序排序。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Zrevrank &lt;key&gt; &lt;member&gt;
+</code></pre></div><p>如果成员是有序集的成员，Zrevrank 返回成员的排名；如果成员不是有序集的成员，返回 nil 。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> ZRANGE salary <span class="token number">0</span> -1 WITHSCORES     <span class="token comment"># 测试数据</span>
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;jack&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;2000&quot;</span>
+<span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">&quot;peter&quot;</span>
+<span class="token number">4</span><span class="token punctuation">)</span> <span class="token string">&quot;3500&quot;</span>
+<span class="token number">5</span><span class="token punctuation">)</span> <span class="token string">&quot;tom&quot;</span>
+<span class="token number">6</span><span class="token punctuation">)</span> <span class="token string">&quot;5000&quot;</span>
+    
+<span class="token operator">&gt;</span> ZREVRANK salary peter     <span class="token comment"># peter 的工资排第二</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+
+<span class="token operator">&gt;</span> ZREVRANK salary tom       <span class="token comment"># tom 的工资最高</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
+</code></pre></div><h3 id="zscore-命令"><a href="#zscore-命令" class="header-anchor">#</a> Zscore 命令</h3> <p>Zscore 命令返回有序集中，成员的分数值。</p> <p>如果成员元素不是有序集的成员，或有序集合不存在，返回 nil 。</p> <p>语法：</p> <div class="language- extra-class"><pre><code>Zscore &lt;key&gt; &lt;member&gt;
+</code></pre></div><p>Zscore 返回成员的分数值<small>（以字符串形式表示）</small>。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> ZRANGE salary <span class="token number">0</span> -1 WITHSCORES    <span class="token comment"># 测试数据</span>
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">&quot;tom&quot;</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">&quot;2000&quot;</span>
+<span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">&quot;peter&quot;</span>
+<span class="token number">4</span><span class="token punctuation">)</span> <span class="token string">&quot;3500&quot;</span>
+<span class="token number">5</span><span class="token punctuation">)</span> <span class="token string">&quot;jack&quot;</span>
+<span class="token number">6</span><span class="token punctuation">)</span> <span class="token string">&quot;5000&quot;</span>
+    
+<span class="token operator">&gt;</span> ZSCORE salary peter              <span class="token comment"># 注意返回值是字符串</span>
+<span class="token string">&quot;3500&quot;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/redis/01-简介.html" class="prev">
+        Redis 简介
+      </a></span> <span class="next"><a href="/redis/03-spring-boot.html">
+        SpringBoot 中使用 Redis
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.2a0e0086.js" defer></script><script src="/assets/js/2.5197d4bf.js" defer></script><script src="/assets/js/237.26987a4d.js" defer></script>
+  </body>
+</html>

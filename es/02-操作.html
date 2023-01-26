@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Elastic Search 进阶 | hemiao3000</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="Java Note All in One">
+    
+    <link rel="preload" href="/assets/css/0.styles.f47fbc3a.css" as="style"><link rel="preload" href="/assets/js/app.2a0e0086.js" as="script"><link rel="preload" href="/assets/js/2.5197d4bf.js" as="script"><link rel="preload" href="/assets/js/49.f6cefa1d.js" as="script"><link rel="prefetch" href="/assets/js/10.1e3cab56.js"><link rel="prefetch" href="/assets/js/100.89eb403f.js"><link rel="prefetch" href="/assets/js/101.42d7809e.js"><link rel="prefetch" href="/assets/js/102.1c8eb525.js"><link rel="prefetch" href="/assets/js/103.9b9587fa.js"><link rel="prefetch" href="/assets/js/104.e85d06e9.js"><link rel="prefetch" href="/assets/js/105.065aabba.js"><link rel="prefetch" href="/assets/js/106.c0bac4b5.js"><link rel="prefetch" href="/assets/js/107.a8264130.js"><link rel="prefetch" href="/assets/js/108.1477276e.js"><link rel="prefetch" href="/assets/js/109.88fbb61d.js"><link rel="prefetch" href="/assets/js/11.59a88738.js"><link rel="prefetch" href="/assets/js/110.bba6173c.js"><link rel="prefetch" href="/assets/js/111.34995448.js"><link rel="prefetch" href="/assets/js/112.3a469dd7.js"><link rel="prefetch" href="/assets/js/113.48b9f2fc.js"><link rel="prefetch" href="/assets/js/114.e0e063d3.js"><link rel="prefetch" href="/assets/js/115.eb7bf139.js"><link rel="prefetch" href="/assets/js/116.2189e21c.js"><link rel="prefetch" href="/assets/js/117.14be282d.js"><link rel="prefetch" href="/assets/js/118.99748a5e.js"><link rel="prefetch" href="/assets/js/119.e96e566b.js"><link rel="prefetch" href="/assets/js/12.298adfbe.js"><link rel="prefetch" href="/assets/js/120.384055c6.js"><link rel="prefetch" href="/assets/js/121.5ff8ea86.js"><link rel="prefetch" href="/assets/js/122.a0f0b033.js"><link rel="prefetch" href="/assets/js/123.77d612f1.js"><link rel="prefetch" href="/assets/js/124.1858235e.js"><link rel="prefetch" href="/assets/js/125.6088837a.js"><link rel="prefetch" href="/assets/js/126.f60cd78b.js"><link rel="prefetch" href="/assets/js/127.644059b1.js"><link rel="prefetch" href="/assets/js/128.ccde4b43.js"><link rel="prefetch" href="/assets/js/129.ea900aff.js"><link rel="prefetch" href="/assets/js/13.70824278.js"><link rel="prefetch" href="/assets/js/130.814ef2bd.js"><link rel="prefetch" href="/assets/js/131.0a15549e.js"><link rel="prefetch" href="/assets/js/132.5a483c59.js"><link rel="prefetch" href="/assets/js/133.f472519c.js"><link rel="prefetch" href="/assets/js/134.98724413.js"><link rel="prefetch" href="/assets/js/135.b1227763.js"><link rel="prefetch" href="/assets/js/136.569394ce.js"><link rel="prefetch" href="/assets/js/137.cb57c3ea.js"><link rel="prefetch" href="/assets/js/138.bf44da29.js"><link rel="prefetch" href="/assets/js/139.4d58dd61.js"><link rel="prefetch" href="/assets/js/14.2e6e5e48.js"><link rel="prefetch" href="/assets/js/140.9366ee37.js"><link rel="prefetch" href="/assets/js/141.f4b07b92.js"><link rel="prefetch" href="/assets/js/142.1135b70d.js"><link rel="prefetch" href="/assets/js/143.f4f7c551.js"><link rel="prefetch" href="/assets/js/144.39c67abd.js"><link rel="prefetch" href="/assets/js/145.d703b2bd.js"><link rel="prefetch" href="/assets/js/146.eb70e2fc.js"><link rel="prefetch" href="/assets/js/147.ce03361f.js"><link rel="prefetch" href="/assets/js/148.92d3943c.js"><link rel="prefetch" href="/assets/js/149.9863294e.js"><link rel="prefetch" href="/assets/js/15.da7ebcce.js"><link rel="prefetch" href="/assets/js/150.482dfaea.js"><link rel="prefetch" href="/assets/js/151.e10026cf.js"><link rel="prefetch" href="/assets/js/152.83952b99.js"><link rel="prefetch" href="/assets/js/153.7f3abc9c.js"><link rel="prefetch" href="/assets/js/154.8d6fe380.js"><link rel="prefetch" href="/assets/js/155.ee846f8c.js"><link rel="prefetch" href="/assets/js/156.30307bd5.js"><link rel="prefetch" href="/assets/js/157.cdd398ff.js"><link rel="prefetch" href="/assets/js/158.4fc1be51.js"><link rel="prefetch" href="/assets/js/159.3f8f4e04.js"><link rel="prefetch" href="/assets/js/16.32dbb119.js"><link rel="prefetch" href="/assets/js/160.8e328e24.js"><link rel="prefetch" href="/assets/js/161.1a1af511.js"><link rel="prefetch" href="/assets/js/162.c103da42.js"><link rel="prefetch" href="/assets/js/163.d9d38d65.js"><link rel="prefetch" href="/assets/js/164.e446e185.js"><link rel="prefetch" href="/assets/js/165.cee81e4f.js"><link rel="prefetch" href="/assets/js/166.2a838c3c.js"><link rel="prefetch" href="/assets/js/167.34bdc749.js"><link rel="prefetch" href="/assets/js/168.62adc13c.js"><link rel="prefetch" href="/assets/js/169.64528cc5.js"><link rel="prefetch" href="/assets/js/17.dd5dbf07.js"><link rel="prefetch" href="/assets/js/170.f4ff41c8.js"><link rel="prefetch" href="/assets/js/171.aebcc4a6.js"><link rel="prefetch" href="/assets/js/172.f941c291.js"><link rel="prefetch" href="/assets/js/173.0cb6857b.js"><link rel="prefetch" href="/assets/js/174.308fbfaa.js"><link rel="prefetch" href="/assets/js/175.1733770a.js"><link rel="prefetch" href="/assets/js/176.ffe8bb57.js"><link rel="prefetch" href="/assets/js/177.d61cf9c9.js"><link rel="prefetch" href="/assets/js/178.c676e6ad.js"><link rel="prefetch" href="/assets/js/179.021bd5b9.js"><link rel="prefetch" href="/assets/js/18.4c426f41.js"><link rel="prefetch" href="/assets/js/180.b6d56d9f.js"><link rel="prefetch" href="/assets/js/181.3e29a2f4.js"><link rel="prefetch" href="/assets/js/182.96c1421b.js"><link rel="prefetch" href="/assets/js/183.bfcdc6de.js"><link rel="prefetch" href="/assets/js/184.acb50183.js"><link rel="prefetch" href="/assets/js/185.2be24c25.js"><link rel="prefetch" href="/assets/js/186.8b6d56c2.js"><link rel="prefetch" href="/assets/js/187.83f09498.js"><link rel="prefetch" href="/assets/js/188.19f84a49.js"><link rel="prefetch" href="/assets/js/189.507b1b8f.js"><link rel="prefetch" href="/assets/js/19.a866d939.js"><link rel="prefetch" href="/assets/js/190.a7f35c31.js"><link rel="prefetch" href="/assets/js/191.44e116bb.js"><link rel="prefetch" href="/assets/js/192.7b3ad93e.js"><link rel="prefetch" href="/assets/js/193.3d7a6691.js"><link rel="prefetch" href="/assets/js/194.6b59737c.js"><link rel="prefetch" href="/assets/js/195.93da8eb6.js"><link rel="prefetch" href="/assets/js/196.a1dc2772.js"><link rel="prefetch" href="/assets/js/197.e8905822.js"><link rel="prefetch" href="/assets/js/198.73d65a99.js"><link rel="prefetch" href="/assets/js/199.e20013c6.js"><link rel="prefetch" href="/assets/js/20.b421340a.js"><link rel="prefetch" href="/assets/js/200.c40695bd.js"><link rel="prefetch" href="/assets/js/201.4a211b60.js"><link rel="prefetch" href="/assets/js/202.18d28a26.js"><link rel="prefetch" href="/assets/js/203.27baad27.js"><link rel="prefetch" href="/assets/js/204.a382712d.js"><link rel="prefetch" href="/assets/js/205.e1dc43b7.js"><link rel="prefetch" href="/assets/js/206.44bd5da0.js"><link rel="prefetch" href="/assets/js/207.4db861da.js"><link rel="prefetch" href="/assets/js/208.232fb574.js"><link rel="prefetch" href="/assets/js/209.42950be5.js"><link rel="prefetch" href="/assets/js/21.f95f1c41.js"><link rel="prefetch" href="/assets/js/210.2d10d529.js"><link rel="prefetch" href="/assets/js/211.b16924d3.js"><link rel="prefetch" href="/assets/js/212.a22fdde7.js"><link rel="prefetch" href="/assets/js/213.43351b18.js"><link rel="prefetch" href="/assets/js/214.0b4e4e90.js"><link rel="prefetch" href="/assets/js/215.92066f5f.js"><link rel="prefetch" href="/assets/js/216.2433eee2.js"><link rel="prefetch" href="/assets/js/217.87aa4253.js"><link rel="prefetch" href="/assets/js/218.3e291446.js"><link rel="prefetch" href="/assets/js/219.ba666ae8.js"><link rel="prefetch" href="/assets/js/22.f2f0b7f6.js"><link rel="prefetch" href="/assets/js/220.3dcced4b.js"><link rel="prefetch" href="/assets/js/221.8eff3d5c.js"><link rel="prefetch" href="/assets/js/222.4d16a7ca.js"><link rel="prefetch" href="/assets/js/223.4e3c17c8.js"><link rel="prefetch" href="/assets/js/224.389b19fe.js"><link rel="prefetch" href="/assets/js/225.ee085656.js"><link rel="prefetch" href="/assets/js/226.15bd3b0e.js"><link rel="prefetch" href="/assets/js/227.b12ea50d.js"><link rel="prefetch" href="/assets/js/228.5fe7b89c.js"><link rel="prefetch" href="/assets/js/229.e16a8ad5.js"><link rel="prefetch" href="/assets/js/23.3b332f61.js"><link rel="prefetch" href="/assets/js/230.db0c8438.js"><link rel="prefetch" href="/assets/js/231.9cf35e55.js"><link rel="prefetch" href="/assets/js/232.7bec532c.js"><link rel="prefetch" href="/assets/js/233.6ddb95e4.js"><link rel="prefetch" href="/assets/js/234.2101fb24.js"><link rel="prefetch" href="/assets/js/235.afb383b5.js"><link rel="prefetch" href="/assets/js/236.846b6704.js"><link rel="prefetch" href="/assets/js/237.26987a4d.js"><link rel="prefetch" href="/assets/js/238.e3e59456.js"><link rel="prefetch" href="/assets/js/239.5ea507c1.js"><link rel="prefetch" href="/assets/js/24.f970f639.js"><link rel="prefetch" href="/assets/js/240.766dc0cd.js"><link rel="prefetch" href="/assets/js/241.f91c7b87.js"><link rel="prefetch" href="/assets/js/242.baee8029.js"><link rel="prefetch" href="/assets/js/243.fa7f9b90.js"><link rel="prefetch" href="/assets/js/244.1b536f15.js"><link rel="prefetch" href="/assets/js/245.10355873.js"><link rel="prefetch" href="/assets/js/246.1671ca24.js"><link rel="prefetch" href="/assets/js/247.5acd1cfd.js"><link rel="prefetch" href="/assets/js/248.557b93ba.js"><link rel="prefetch" href="/assets/js/249.6325cda5.js"><link rel="prefetch" href="/assets/js/25.915ccb8b.js"><link rel="prefetch" href="/assets/js/250.2c47b263.js"><link rel="prefetch" href="/assets/js/251.b9915ea2.js"><link rel="prefetch" href="/assets/js/252.1769b4ce.js"><link rel="prefetch" href="/assets/js/253.b3f176b9.js"><link rel="prefetch" href="/assets/js/254.20747e20.js"><link rel="prefetch" href="/assets/js/255.10dd24b0.js"><link rel="prefetch" href="/assets/js/256.77789711.js"><link rel="prefetch" href="/assets/js/257.dfce5065.js"><link rel="prefetch" href="/assets/js/258.20d46398.js"><link rel="prefetch" href="/assets/js/259.7bb7e68d.js"><link rel="prefetch" href="/assets/js/26.6beeb907.js"><link rel="prefetch" href="/assets/js/260.7297cae9.js"><link rel="prefetch" href="/assets/js/261.1864517a.js"><link rel="prefetch" href="/assets/js/262.5d7edfe0.js"><link rel="prefetch" href="/assets/js/263.10d4609c.js"><link rel="prefetch" href="/assets/js/264.ed74db82.js"><link rel="prefetch" href="/assets/js/265.bf0968ee.js"><link rel="prefetch" href="/assets/js/266.aa1f5527.js"><link rel="prefetch" href="/assets/js/267.a60b73d1.js"><link rel="prefetch" href="/assets/js/268.93b88726.js"><link rel="prefetch" href="/assets/js/269.23335c50.js"><link rel="prefetch" href="/assets/js/27.e3d799b8.js"><link rel="prefetch" href="/assets/js/270.cdcc6831.js"><link rel="prefetch" href="/assets/js/271.895326b4.js"><link rel="prefetch" href="/assets/js/272.994f0815.js"><link rel="prefetch" href="/assets/js/273.4b7d1596.js"><link rel="prefetch" href="/assets/js/274.95de5708.js"><link rel="prefetch" href="/assets/js/275.d3f1ea3a.js"><link rel="prefetch" href="/assets/js/276.e523da0d.js"><link rel="prefetch" href="/assets/js/277.cfd44766.js"><link rel="prefetch" href="/assets/js/278.0c433a12.js"><link rel="prefetch" href="/assets/js/279.a1ed8745.js"><link rel="prefetch" href="/assets/js/28.04104649.js"><link rel="prefetch" href="/assets/js/280.3fcf8899.js"><link rel="prefetch" href="/assets/js/281.47c5a007.js"><link rel="prefetch" href="/assets/js/282.ba9f0bde.js"><link rel="prefetch" href="/assets/js/283.adfd31b2.js"><link rel="prefetch" href="/assets/js/284.60b76cd7.js"><link rel="prefetch" href="/assets/js/285.2b3e7c47.js"><link rel="prefetch" href="/assets/js/286.4d559cb5.js"><link rel="prefetch" href="/assets/js/287.20392707.js"><link rel="prefetch" href="/assets/js/288.25ea64b4.js"><link rel="prefetch" href="/assets/js/289.9eed054c.js"><link rel="prefetch" href="/assets/js/29.499f1d39.js"><link rel="prefetch" href="/assets/js/290.9d5b0811.js"><link rel="prefetch" href="/assets/js/291.2968091e.js"><link rel="prefetch" href="/assets/js/292.786f219f.js"><link rel="prefetch" href="/assets/js/293.49fce9ba.js"><link rel="prefetch" href="/assets/js/294.8efa6e84.js"><link rel="prefetch" href="/assets/js/295.2b36b304.js"><link rel="prefetch" href="/assets/js/296.d317e8a1.js"><link rel="prefetch" href="/assets/js/297.ccfd968b.js"><link rel="prefetch" href="/assets/js/298.8163f812.js"><link rel="prefetch" href="/assets/js/299.c36aa0b8.js"><link rel="prefetch" href="/assets/js/3.ec3ff53e.js"><link rel="prefetch" href="/assets/js/30.ffa7e894.js"><link rel="prefetch" href="/assets/js/300.3fdb0d70.js"><link rel="prefetch" href="/assets/js/301.6cb7bd6e.js"><link rel="prefetch" href="/assets/js/302.45daeffe.js"><link rel="prefetch" href="/assets/js/303.100b3d5b.js"><link rel="prefetch" href="/assets/js/304.2019f7cc.js"><link rel="prefetch" href="/assets/js/305.188c6b80.js"><link rel="prefetch" href="/assets/js/306.df056bf9.js"><link rel="prefetch" href="/assets/js/307.4339b90a.js"><link rel="prefetch" href="/assets/js/308.fa360ec4.js"><link rel="prefetch" href="/assets/js/309.f131c986.js"><link rel="prefetch" href="/assets/js/31.72c967d1.js"><link rel="prefetch" href="/assets/js/310.a662fb66.js"><link rel="prefetch" href="/assets/js/311.96067cfa.js"><link rel="prefetch" href="/assets/js/312.b439b634.js"><link rel="prefetch" href="/assets/js/313.aee52801.js"><link rel="prefetch" href="/assets/js/314.326267fc.js"><link rel="prefetch" href="/assets/js/315.19ccdf1b.js"><link rel="prefetch" href="/assets/js/316.1180f907.js"><link rel="prefetch" href="/assets/js/317.2d9d626f.js"><link rel="prefetch" href="/assets/js/318.0edae3ea.js"><link rel="prefetch" href="/assets/js/319.6e587615.js"><link rel="prefetch" href="/assets/js/32.1e042532.js"><link rel="prefetch" href="/assets/js/320.4da94556.js"><link rel="prefetch" href="/assets/js/321.bdf03815.js"><link rel="prefetch" href="/assets/js/322.2e95a194.js"><link rel="prefetch" href="/assets/js/323.6afcc73e.js"><link rel="prefetch" href="/assets/js/324.c7e424e8.js"><link rel="prefetch" href="/assets/js/325.1f5fe5cc.js"><link rel="prefetch" href="/assets/js/326.30472009.js"><link rel="prefetch" href="/assets/js/327.e1a3c701.js"><link rel="prefetch" href="/assets/js/328.8b54cbce.js"><link rel="prefetch" href="/assets/js/329.e437b757.js"><link rel="prefetch" href="/assets/js/33.2071fa71.js"><link rel="prefetch" href="/assets/js/330.23075090.js"><link rel="prefetch" href="/assets/js/331.cb3c8ba2.js"><link rel="prefetch" href="/assets/js/332.d48777dd.js"><link rel="prefetch" href="/assets/js/333.20de85d6.js"><link rel="prefetch" href="/assets/js/334.9aa45eec.js"><link rel="prefetch" href="/assets/js/335.cf061868.js"><link rel="prefetch" href="/assets/js/336.7bdc4422.js"><link rel="prefetch" href="/assets/js/337.4c35c225.js"><link rel="prefetch" href="/assets/js/338.b258f72d.js"><link rel="prefetch" href="/assets/js/339.60b8a4dd.js"><link rel="prefetch" href="/assets/js/34.a8cfe758.js"><link rel="prefetch" href="/assets/js/340.b55b6096.js"><link rel="prefetch" href="/assets/js/341.84aca80e.js"><link rel="prefetch" href="/assets/js/342.9b2f9017.js"><link rel="prefetch" href="/assets/js/343.844f2bc7.js"><link rel="prefetch" href="/assets/js/344.6bb02350.js"><link rel="prefetch" href="/assets/js/345.9c62eaba.js"><link rel="prefetch" href="/assets/js/346.fca463be.js"><link rel="prefetch" href="/assets/js/347.8970fcbf.js"><link rel="prefetch" href="/assets/js/348.a6b83491.js"><link rel="prefetch" href="/assets/js/349.08be2f0b.js"><link rel="prefetch" href="/assets/js/35.cdd41f71.js"><link rel="prefetch" href="/assets/js/350.baf44f92.js"><link rel="prefetch" href="/assets/js/351.2d8a8d39.js"><link rel="prefetch" href="/assets/js/352.f666bb14.js"><link rel="prefetch" href="/assets/js/353.10ece07a.js"><link rel="prefetch" href="/assets/js/354.c6e9ef1f.js"><link rel="prefetch" href="/assets/js/355.40eec06d.js"><link rel="prefetch" href="/assets/js/356.cc2f1b7f.js"><link rel="prefetch" href="/assets/js/357.10e344e1.js"><link rel="prefetch" href="/assets/js/358.5e8d05a0.js"><link rel="prefetch" href="/assets/js/359.2d525223.js"><link rel="prefetch" href="/assets/js/36.919e6ba3.js"><link rel="prefetch" href="/assets/js/360.da8a1144.js"><link rel="prefetch" href="/assets/js/361.1ac300c0.js"><link rel="prefetch" href="/assets/js/362.8701799f.js"><link rel="prefetch" href="/assets/js/363.e46c31c4.js"><link rel="prefetch" href="/assets/js/364.fc6c4a8a.js"><link rel="prefetch" href="/assets/js/365.da925c8b.js"><link rel="prefetch" href="/assets/js/366.fa02c4db.js"><link rel="prefetch" href="/assets/js/367.e84e0fb3.js"><link rel="prefetch" href="/assets/js/368.359d83e3.js"><link rel="prefetch" href="/assets/js/369.58af2f70.js"><link rel="prefetch" href="/assets/js/37.88355974.js"><link rel="prefetch" href="/assets/js/370.66a40ffb.js"><link rel="prefetch" href="/assets/js/371.ee99818a.js"><link rel="prefetch" href="/assets/js/372.5d9079db.js"><link rel="prefetch" href="/assets/js/373.0359fd60.js"><link rel="prefetch" href="/assets/js/374.a4de99b1.js"><link rel="prefetch" href="/assets/js/375.4570b37a.js"><link rel="prefetch" href="/assets/js/376.53476bba.js"><link rel="prefetch" href="/assets/js/377.689818f7.js"><link rel="prefetch" href="/assets/js/378.d89d31af.js"><link rel="prefetch" href="/assets/js/379.fb82d60c.js"><link rel="prefetch" href="/assets/js/38.cad0fc71.js"><link rel="prefetch" href="/assets/js/380.85198566.js"><link rel="prefetch" href="/assets/js/381.ae8317d1.js"><link rel="prefetch" href="/assets/js/382.58c9e741.js"><link rel="prefetch" href="/assets/js/383.ee3fe633.js"><link rel="prefetch" href="/assets/js/384.0a191212.js"><link rel="prefetch" href="/assets/js/385.e3ccc3ad.js"><link rel="prefetch" href="/assets/js/386.22027d7d.js"><link rel="prefetch" href="/assets/js/387.3eeb0716.js"><link rel="prefetch" href="/assets/js/388.5c149843.js"><link rel="prefetch" href="/assets/js/389.9b50d957.js"><link rel="prefetch" href="/assets/js/39.24010b8d.js"><link rel="prefetch" href="/assets/js/390.39b1f5ff.js"><link rel="prefetch" href="/assets/js/391.cbcda5c9.js"><link rel="prefetch" href="/assets/js/392.f995f59f.js"><link rel="prefetch" href="/assets/js/393.2f75984b.js"><link rel="prefetch" href="/assets/js/394.ea7f3774.js"><link rel="prefetch" href="/assets/js/395.4f424dee.js"><link rel="prefetch" href="/assets/js/396.c76bc489.js"><link rel="prefetch" href="/assets/js/397.8a1b2cc3.js"><link rel="prefetch" href="/assets/js/398.42e064e4.js"><link rel="prefetch" href="/assets/js/399.16f3d435.js"><link rel="prefetch" href="/assets/js/4.93ec791c.js"><link rel="prefetch" href="/assets/js/40.bd3d9a39.js"><link rel="prefetch" href="/assets/js/400.3440cb4b.js"><link rel="prefetch" href="/assets/js/401.827b23b9.js"><link rel="prefetch" href="/assets/js/402.c6a70840.js"><link rel="prefetch" href="/assets/js/403.dc8d0f36.js"><link rel="prefetch" href="/assets/js/404.05a4374e.js"><link rel="prefetch" href="/assets/js/405.3c45c89c.js"><link rel="prefetch" href="/assets/js/406.66d1d0f4.js"><link rel="prefetch" href="/assets/js/407.a0518bda.js"><link rel="prefetch" href="/assets/js/408.0056dad8.js"><link rel="prefetch" href="/assets/js/409.1f9aefa6.js"><link rel="prefetch" href="/assets/js/41.9e141a4f.js"><link rel="prefetch" href="/assets/js/410.a35b5300.js"><link rel="prefetch" href="/assets/js/411.bc9650d2.js"><link rel="prefetch" href="/assets/js/412.e00f104b.js"><link rel="prefetch" href="/assets/js/413.25ef56c5.js"><link rel="prefetch" href="/assets/js/414.cdaa11bd.js"><link rel="prefetch" href="/assets/js/415.cce2a856.js"><link rel="prefetch" href="/assets/js/416.fa9934bd.js"><link rel="prefetch" href="/assets/js/417.500f47ea.js"><link rel="prefetch" href="/assets/js/418.2ef6f6ba.js"><link rel="prefetch" href="/assets/js/419.ec8571b4.js"><link rel="prefetch" href="/assets/js/42.d492b5aa.js"><link rel="prefetch" href="/assets/js/420.be2674a7.js"><link rel="prefetch" href="/assets/js/421.d7bb6384.js"><link rel="prefetch" href="/assets/js/422.8749a7a6.js"><link rel="prefetch" href="/assets/js/423.418f421a.js"><link rel="prefetch" href="/assets/js/424.9ba49f0f.js"><link rel="prefetch" href="/assets/js/425.2f1bc2f7.js"><link rel="prefetch" href="/assets/js/426.e0af5b96.js"><link rel="prefetch" href="/assets/js/427.4f00c4a0.js"><link rel="prefetch" href="/assets/js/43.9a0ca836.js"><link rel="prefetch" href="/assets/js/44.ac3652d4.js"><link rel="prefetch" href="/assets/js/45.2d07d148.js"><link rel="prefetch" href="/assets/js/46.0c2866e6.js"><link rel="prefetch" href="/assets/js/47.cf37ad71.js"><link rel="prefetch" href="/assets/js/48.74897468.js"><link rel="prefetch" href="/assets/js/5.112a4da8.js"><link rel="prefetch" href="/assets/js/50.6adecd4c.js"><link rel="prefetch" href="/assets/js/51.0f539ecd.js"><link rel="prefetch" href="/assets/js/52.ff2d24a2.js"><link rel="prefetch" href="/assets/js/53.41f9aecc.js"><link rel="prefetch" href="/assets/js/54.9986979d.js"><link rel="prefetch" href="/assets/js/55.c3bf2fc5.js"><link rel="prefetch" href="/assets/js/56.ca9f6c28.js"><link rel="prefetch" href="/assets/js/57.699610a3.js"><link rel="prefetch" href="/assets/js/58.dc7773de.js"><link rel="prefetch" href="/assets/js/59.b85736ff.js"><link rel="prefetch" href="/assets/js/6.3e921c42.js"><link rel="prefetch" href="/assets/js/60.f1003898.js"><link rel="prefetch" href="/assets/js/61.c4c403f4.js"><link rel="prefetch" href="/assets/js/62.ed8e50a5.js"><link rel="prefetch" href="/assets/js/63.64cd3fee.js"><link rel="prefetch" href="/assets/js/64.e388d5ae.js"><link rel="prefetch" href="/assets/js/65.29951343.js"><link rel="prefetch" href="/assets/js/66.1ea4ad87.js"><link rel="prefetch" href="/assets/js/67.463a27f8.js"><link rel="prefetch" href="/assets/js/68.88e8b422.js"><link rel="prefetch" href="/assets/js/69.ce1b84b3.js"><link rel="prefetch" href="/assets/js/7.5c268975.js"><link rel="prefetch" href="/assets/js/70.551c5f52.js"><link rel="prefetch" href="/assets/js/71.cd36811b.js"><link rel="prefetch" href="/assets/js/72.1b96650f.js"><link rel="prefetch" href="/assets/js/73.736d3bfe.js"><link rel="prefetch" href="/assets/js/74.96ff3fac.js"><link rel="prefetch" href="/assets/js/75.84d8a749.js"><link rel="prefetch" href="/assets/js/76.fac6e027.js"><link rel="prefetch" href="/assets/js/77.4f2d1524.js"><link rel="prefetch" href="/assets/js/78.aa8c1ca1.js"><link rel="prefetch" href="/assets/js/79.c31601c8.js"><link rel="prefetch" href="/assets/js/8.a4eb93a7.js"><link rel="prefetch" href="/assets/js/80.3139181d.js"><link rel="prefetch" href="/assets/js/81.614abe85.js"><link rel="prefetch" href="/assets/js/82.2d806c4d.js"><link rel="prefetch" href="/assets/js/83.537cd6eb.js"><link rel="prefetch" href="/assets/js/84.8be49118.js"><link rel="prefetch" href="/assets/js/85.eab92218.js"><link rel="prefetch" href="/assets/js/86.30bf9928.js"><link rel="prefetch" href="/assets/js/87.d4db1c81.js"><link rel="prefetch" href="/assets/js/88.1d9ff3df.js"><link rel="prefetch" href="/assets/js/89.21115247.js"><link rel="prefetch" href="/assets/js/9.c513f608.js"><link rel="prefetch" href="/assets/js/90.ade9e720.js"><link rel="prefetch" href="/assets/js/91.b4fdf18b.js"><link rel="prefetch" href="/assets/js/92.53aaea7d.js"><link rel="prefetch" href="/assets/js/93.0b954340.js"><link rel="prefetch" href="/assets/js/94.1e64c3b0.js"><link rel="prefetch" href="/assets/js/95.6a103dc3.js"><link rel="prefetch" href="/assets/js/96.716744ae.js"><link rel="prefetch" href="/assets/js/97.25459d09.js"><link rel="prefetch" href="/assets/js/98.b6c42c9e.js"><link rel="prefetch" href="/assets/js/99.b87bc26a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.f47fbc3a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">hemiao3000</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具库" class="dropdown-title"><span class="title">工具库</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具库" class="mobile-dropdown-title"><span class="title">工具库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/utility/spring-utils/01-top4.html" class="nav-link">
+  Spring 内置工具库
+</a></li><li class="dropdown-item"><!----> <a href="/utility/guava/01-字符串工具类.html" class="nav-link">
+  Guava 工具库
+</a></li><li class="dropdown-item"><!----> <a href="/utility/3rd/01-slf4j.html" class="nav-link">
+  其它工具库
+</a></li><li class="dropdown-item"><!----> <a href="/gist/01-jdbc.html" class="nav-link">
+  各种模板
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="第一阶段" class="dropdown-title"><span class="title">第一阶段</span> <span class="arrow down"></span></button> <button type="button" aria-label="第一阶段" class="mobile-dropdown-title"><span class="title">第一阶段</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/01-Java语法汇总.html" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/java-thread/01-base.html" class="nav-link">
+  Java 多线程
+</a></li><li class="dropdown-item"><!----> <a href="/java8/02-lambda.html" class="nav-link">
+  JDK8 新特性
+</a></li><li class="dropdown-item"><!----> <a href="/mysql/01-操作Database.html" class="nav-link">
+  MySQL 数据库
+</a></li><li class="dropdown-item"><!----> <a href="/jdbc/01-JDBC基础.html" class="nav-link">
+  JDBC 操作数据库
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="第二阶段" class="dropdown-title"><span class="title">第二阶段</span> <span class="arrow down"></span></button> <button type="button" aria-label="第二阶段" class="mobile-dropdown-title"><span class="title">第二阶段</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/html/01-基本概念和结构.html" class="nav-link">
+  HTML
+</a></li><li class="dropdown-item"><!----> <a href="/css/01-基本概念.html" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/js/01-基础.html" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/servlet/00-HTTP概述.html" class="nav-link">
+  Servlet
+</a></li><li class="dropdown-item"><!----> <a href="/junit/01-基础.html" class="nav-link">
+  JUnit
+</a></li><li class="dropdown-item"><!----> <a href="/mybatis/01-basics.html" class="nav-link">
+  Mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/ajax/01-基础.html" class="nav-link">
+  AJAX 请求及相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="第三阶段" class="dropdown-title"><span class="title">第三阶段</span> <span class="arrow down"></span></button> <button type="button" aria-label="第三阶段" class="mobile-dropdown-title"><span class="title">第三阶段</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/maven/001-基本概念.html" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/spring/01-IoC.html" class="nav-link">
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/spring-mvc/001-helloworld.html" class="nav-link">
+  Spring MVC
+</a></li><li class="dropdown-item"><!----> <a href="/spring-boot/02-Java代码配置.html" class="nav-link">
+  Spring Boot
+</a></li><li class="dropdown-item"><!----> <a href="/shiro/01-基础.html" class="nav-link">
+  Shiro
+</a></li><li class="dropdown-item"><!----> <a href="/restful/01-基础.html" class="nav-link">
+  RESTful API
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vue-00-devtool.html" class="nav-link">
+  Vue（上）
+</a></li><li class="dropdown-item"><!----> <a href="/vue-cli/vue-cli-01.html" class="nav-link">
+  Vue（下）
+</a></li><li class="dropdown-item"><!----> <a href="/nginx/01-前后端分离.html" class="nav-link">
+  Nginx
+</a></li><li class="dropdown-item"><!----> <a href="/redis/01-简介.html" class="nav-link">
+  Redis
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="第四阶段" class="dropdown-title"><span class="title">第四阶段</span> <span class="arrow down"></span></button> <button type="button" aria-label="第四阶段" class="mobile-dropdown-title"><span class="title">第四阶段</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/spring-cloud/00-拆分和restTemplate.html" class="nav-link">
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/rabbitmq/01-简介.html" class="nav-link">
+  RabbitMQ
+</a></li><li class="dropdown-item"><!----> <a href="/es/00-素材.html" class="nav-link">
+  ElasticSearch
+</a></li><li class="dropdown-item"><!----> <a href="/spring-data-jpa/01.基本概念.html" class="nav-link">
+  Spring Data JPA
+</a></li><li class="dropdown-item"><!----> <a href="/other/01-SnowFlake.html" class="nav-link">
+  其它
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发环境和软件安装" class="dropdown-title"><span class="title">开发环境和软件安装</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发环境和软件安装" class="mobile-dropdown-title"><span class="title">开发环境和软件安装</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/windows/01-IDEA.html" class="nav-link">
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/linux/00-预备知识.html" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/git/000-安装与配置.html" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/docker/01-简介和安装.html" class="nav-link">
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/docker-install/01-mysql.html" class="nav-link">
+  Docker 安装软件
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试复习" class="dropdown-title"><span class="title">面试复习</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试复习" class="mobile-dropdown-title"><span class="title">面试复习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/jvm/01-JVM内存布局.html" class="nav-link">
+  Java 虚拟机
+</a></li><li class="dropdown-item"><!----> <a href="/interview-questions/01-ArraySort.html" class="nav-link">
+  面试题专题
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具库" class="dropdown-title"><span class="title">工具库</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具库" class="mobile-dropdown-title"><span class="title">工具库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/utility/spring-utils/01-top4.html" class="nav-link">
+  Spring 内置工具库
+</a></li><li class="dropdown-item"><!----> <a href="/utility/guava/01-字符串工具类.html" class="nav-link">
+  Guava 工具库
+</a></li><li class="dropdown-item"><!----> <a href="/utility/3rd/01-slf4j.html" class="nav-link">
+  其它工具库
+</a></li><li class="dropdown-item"><!----> <a href="/gist/01-jdbc.html" class="nav-link">
+  各种模板
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="第一阶段" class="dropdown-title"><span class="title">第一阶段</span> <span class="arrow down"></span></button> <button type="button" aria-label="第一阶段" class="mobile-dropdown-title"><span class="title">第一阶段</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/01-Java语法汇总.html" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/java-thread/01-base.html" class="nav-link">
+  Java 多线程
+</a></li><li class="dropdown-item"><!----> <a href="/java8/02-lambda.html" class="nav-link">
+  JDK8 新特性
+</a></li><li class="dropdown-item"><!----> <a href="/mysql/01-操作Database.html" class="nav-link">
+  MySQL 数据库
+</a></li><li class="dropdown-item"><!----> <a href="/jdbc/01-JDBC基础.html" class="nav-link">
+  JDBC 操作数据库
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="第二阶段" class="dropdown-title"><span class="title">第二阶段</span> <span class="arrow down"></span></button> <button type="button" aria-label="第二阶段" class="mobile-dropdown-title"><span class="title">第二阶段</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/html/01-基本概念和结构.html" class="nav-link">
+  HTML
+</a></li><li class="dropdown-item"><!----> <a href="/css/01-基本概念.html" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/js/01-基础.html" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/servlet/00-HTTP概述.html" class="nav-link">
+  Servlet
+</a></li><li class="dropdown-item"><!----> <a href="/junit/01-基础.html" class="nav-link">
+  JUnit
+</a></li><li class="dropdown-item"><!----> <a href="/mybatis/01-basics.html" class="nav-link">
+  Mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/ajax/01-基础.html" class="nav-link">
+  AJAX 请求及相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="第三阶段" class="dropdown-title"><span class="title">第三阶段</span> <span class="arrow down"></span></button> <button type="button" aria-label="第三阶段" class="mobile-dropdown-title"><span class="title">第三阶段</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/maven/001-基本概念.html" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/spring/01-IoC.html" class="nav-link">
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/spring-mvc/001-helloworld.html" class="nav-link">
+  Spring MVC
+</a></li><li class="dropdown-item"><!----> <a href="/spring-boot/02-Java代码配置.html" class="nav-link">
+  Spring Boot
+</a></li><li class="dropdown-item"><!----> <a href="/shiro/01-基础.html" class="nav-link">
+  Shiro
+</a></li><li class="dropdown-item"><!----> <a href="/restful/01-基础.html" class="nav-link">
+  RESTful API
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vue-00-devtool.html" class="nav-link">
+  Vue（上）
+</a></li><li class="dropdown-item"><!----> <a href="/vue-cli/vue-cli-01.html" class="nav-link">
+  Vue（下）
+</a></li><li class="dropdown-item"><!----> <a href="/nginx/01-前后端分离.html" class="nav-link">
+  Nginx
+</a></li><li class="dropdown-item"><!----> <a href="/redis/01-简介.html" class="nav-link">
+  Redis
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="第四阶段" class="dropdown-title"><span class="title">第四阶段</span> <span class="arrow down"></span></button> <button type="button" aria-label="第四阶段" class="mobile-dropdown-title"><span class="title">第四阶段</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/spring-cloud/00-拆分和restTemplate.html" class="nav-link">
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/rabbitmq/01-简介.html" class="nav-link">
+  RabbitMQ
+</a></li><li class="dropdown-item"><!----> <a href="/es/00-素材.html" class="nav-link">
+  ElasticSearch
+</a></li><li class="dropdown-item"><!----> <a href="/spring-data-jpa/01.基本概念.html" class="nav-link">
+  Spring Data JPA
+</a></li><li class="dropdown-item"><!----> <a href="/other/01-SnowFlake.html" class="nav-link">
+  其它
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发环境和软件安装" class="dropdown-title"><span class="title">开发环境和软件安装</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发环境和软件安装" class="mobile-dropdown-title"><span class="title">开发环境和软件安装</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/windows/01-IDEA.html" class="nav-link">
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/linux/00-预备知识.html" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/git/000-安装与配置.html" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/docker/01-简介和安装.html" class="nav-link">
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/docker-install/01-mysql.html" class="nav-link">
+  Docker 安装软件
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试复习" class="dropdown-title"><span class="title">面试复习</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试复习" class="mobile-dropdown-title"><span class="title">面试复习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/jvm/01-JVM内存布局.html" class="nav-link">
+  Java 虚拟机
+</a></li><li class="dropdown-item"><!----> <a href="/interview-questions/01-ArraySort.html" class="nav-link">
+  面试题专题
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>ElasticSearch</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/es/00-素材.html" class="sidebar-link">概念</a></li><li><a href="/es/01-概念.html" class="sidebar-link">基本操作</a></li><li><a href="/es/02-操作.html" class="active sidebar-link">Spring Boot 整合 ES</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/es/02-操作.html#_1-操作索引" class="sidebar-link">1. 操作索引</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/es/02-操作.html#创建索引" class="sidebar-link">创建索引</a></li><li class="sidebar-sub-header"><a href="/es/02-操作.html#删除索引" class="sidebar-link">删除索引</a></li><li class="sidebar-sub-header"><a href="/es/02-操作.html#查看索引-了解、自学" class="sidebar-link">查看索引（了解、自学）</a></li></ul></li><li class="sidebar-sub-header"><a href="/es/02-操作.html#_2-增删改文档" class="sidebar-link">2. 增删改文档</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/es/02-操作.html#新建文档-插入新的文档" class="sidebar-link">新建文档（插入新的文档）</a></li><li class="sidebar-sub-header"><a href="/es/02-操作.html#删除文档" class="sidebar-link">删除文档</a></li><li class="sidebar-sub-header"><a href="/es/02-操作.html#查询删除" class="sidebar-link">查询删除</a></li><li class="sidebar-sub-header"><a href="/es/02-操作.html#更新文档" class="sidebar-link">更新文档</a></li><li class="sidebar-sub-header"><a href="/es/02-操作.html#局部更新文档" class="sidebar-link">局部更新文档</a></li><li class="sidebar-sub-header"><a href="/es/02-操作.html#映射" class="sidebar-link">映射</a></li></ul></li><li class="sidebar-sub-header"><a href="/es/02-操作.html#_3-查询文档" class="sidebar-link">3. 查询文档</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/es/02-操作.html#简单查询" class="sidebar-link">简单查询</a></li><li class="sidebar-sub-header"><a href="/es/02-操作.html#词项-term-查询" class="sidebar-link">词项（term）查询</a></li><li class="sidebar-sub-header"><a href="/es/02-操作.html#全文-text-查询" class="sidebar-link">全文（text）查询</a></li><li class="sidebar-sub-header"><a href="/es/02-操作.html#其它查询" class="sidebar-link">其它查询</a></li><li class="sidebar-sub-header"><a href="/es/02-操作.html#复合查询" class="sidebar-link">复合查询</a></li></ul></li></ul></li><li><a href="/es/03-spring-boot.html" class="sidebar-link">Spring Boot 整合 ElasticSearch</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="elastic-search-进阶"><a href="#elastic-search-进阶" class="header-anchor">#</a> Elastic Search 进阶</h1> <h2 id="_1-操作索引"><a href="#_1-操作索引" class="header-anchor">#</a> 1. 操作索引</h2> <p>ES 集群可以包含：</p> <ul><li><p>多个索引<small>（indices）</small>。类比 SQL 领域中的数据库<small>（database）</small>；</p></li> <li><p>每一个索引<small>（index）</small>中可以包含多个类型<small>（types）</small>。类比 SQL 领域中的表<small>（table）</small>；<small>不过 type 的概念在弱化，可使用 <code>_doc</code> 关键字代替。</small></p></li> <li><p>每一个类型包含多个文档<small>（documents）</small>，类比于 SQL 领域中的行<small>（row）</small>；</p></li> <li><p>然后每个文档<small>（document）</small>包含多个字段<small>（Fields）</small>，类比于 SQL 领域中的列<small>（Column）</small>。</p></li></ul> <h3 id="创建索引"><a href="#创建索引" class="header-anchor">#</a> 创建索引</h3> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">PUT</span> 索引名
+</code></pre></div><p>返回结果显示 <code>acknowledged</code> 的值为 <code>true</code>，说明新建索引成功。</p> <p><strong>索引名中不能含有大写字母。</strong></p> <p>Elasticsearch 默认给一个索引设置 5 个分片 1 个副本，一个索引的分片数一经指定后就不能再修改，副本数可以通过命令随时修改。</p> <p>如果想创建自定义分片数和副本数的索引，可以通过 setting 参数在创建索引时设置初始化信息。</p> <ul><li><p>例如，指定创建 3 个分片 0 个副本：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">PUT</span> 索引名
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;settings&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;number_of_shards&quot;</span> <span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;number_of_replicas&quot;</span> <span class="token operator">:</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li></ul> <p>在创建索引之后，也可修改其索引的副本数。</p> <ul><li><p>例如，将名为 <code>xxx</code> 的索引的副本数修改为 3 使用如下命令：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">PUT</span> xxx<span class="token operator">/</span>_settings
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;number_of_replicas&quot;</span> <span class="token operator">:</span> <span class="token number">3</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li></ul> <h3 id="删除索引"><a href="#删除索引" class="header-anchor">#</a> 删除索引</h3> <p>索引的删除只需要使用 <strong>DELETE</strong> 方法，传入要删除的索引名即可。注意，一旦执行删除操作索引中的文档就不服存在。</p> <ul><li><p>删除名为 <code>xxx</code> 的索引，命令如下：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">DELETE</span> xxx
+</code></pre></div></li> <li><p>如果删除成功，会有以下响应：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token punctuation">{</span>
+  <span class="token string">&quot;acknowledged&quot;</span> <span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li></ul> <p>尝试删除一个不存在的索引，会报 <code>索引未找到</code> 异常。</p> <h3 id="查看索引-了解、自学"><a href="#查看索引-了解、自学" class="header-anchor">#</a> 查看索引（了解、自学）</h3> <p>使用 GET 方法加上 <strong>_setting</strong> 参数可以查看一个索引的所有配置信息。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> xxx<span class="token operator">/</span>_settings
+
+<span class="token constant">GET</span> xxx<span class="token punctuation">,</span>yyy<span class="token punctuation">,</span>zzz<span class="token operator">/</span>_settings
+
+<span class="token constant">GET</span> _all<span class="token operator">/</span>_settings
+</code></pre></div><h2 id="_2-增删改文档"><a href="#_2-增删改文档" class="header-anchor">#</a> 2. 增删改文档</h2> <p>Elasticsearch 中文档的增删改查和关系型数据库操作非常相似。</p> <h3 id="新建文档-插入新的文档"><a href="#新建文档-插入新的文档" class="header-anchor">#</a> 新建文档（插入新的文档）</h3> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">PUT</span> 索引名<span class="token operator">/</span>_doc<span class="token operator">/</span>手动指定<span class="token constant">ID</span>值
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;field1&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;value1&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;field2&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;value2&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;field3&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;value3&quot;</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>例如：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">PUT</span> books<span class="token operator">/</span>_doc<span class="token operator">/</span><span class="token number">1</span>
+<span class="token punctuation">{</span> 
+  <span class="token string">&quot;id&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">,</span> 
+  <span class="token string">&quot;title&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;Java 编程思想&quot;</span><span class="token punctuation">,</span> 
+  <span class="token string">&quot;language&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;java&quot;</span><span class="token punctuation">,</span> 
+  <span class="token string">&quot;author&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;Bruce Eckel&quot;</span><span class="token punctuation">,</span> 
+  <span class="token string">&quot;price&quot;</span><span class="token operator">:</span> <span class="token number">70.20</span><span class="token punctuation">,</span> 
+  <span class="token string">&quot;publish_date&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;2007-10-01&quot;</span><span class="token punctuation">,</span> 
+  <span class="token string">&quot;description&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;Java 学习必读经典，殿堂级著作！赢得了全球程序员的广泛赞誉。&quot;</span> 
+<span class="token punctuation">}</span>
+</code></pre></div><p>如果没有出现错误，Elasticsearch 服务器会返回一个 JSON 格式的响应信息中会有 <code>&quot;created&quot;: true</code> 信息。</p> <p>当然，你也可以直接通过查询命令以验证你是否插入成功：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> <span class="token operator">/</span>索引名<span class="token operator">/</span>_doc<span class="token operator">/</span><span class="token constant">ID</span>值<span class="token operator">/</span>_source
+
+<span class="token constant">GET</span> <span class="token operator">/</span>索引名<span class="token operator">/</span>_doc<span class="token operator">/</span>_search
+</code></pre></div><p>向索引中新加文档时，如果你没有手动指定文档的 ID，那么 Elasticsearch 会自动生成它的 ID 。不过，此时需要使用 <strong>POST</strong> 命令，而非 PUT 命令。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">POST</span> books<span class="token operator">/</span>_doc
+<span class="token punctuation">{</span> 
+  <span class="token string">&quot;id&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">,</span> 
+  <span class="token string">&quot;title&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;Java 编程思想&quot;</span><span class="token punctuation">,</span> 
+  <span class="token string">&quot;language&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;java&quot;</span><span class="token punctuation">,</span> 
+  <span class="token string">&quot;author&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;Bruce Eckel&quot;</span><span class="token punctuation">,</span> 
+  <span class="token string">&quot;price&quot;</span><span class="token operator">:</span> <span class="token number">70.20</span><span class="token punctuation">,</span> 
+  <span class="token string">&quot;publish_date&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;2007-10-01&quot;</span><span class="token punctuation">,</span> 
+  <span class="token string">&quot;description&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;Java 学习必读经典，殿堂级著作！赢得了全球程序员的广泛赞誉。&quot;</span> 
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="删除文档"><a href="#删除文档" class="header-anchor">#</a> 删除文档</h3> <p>Delete API 允许基于指定的 ID 从索引库中删除一个文档。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">DELETE</span> <span class="token operator">/</span>索引名<span class="token operator">/</span>_doc<span class="token operator">/</span><span class="token constant">ID</span>值
+</code></pre></div><p>例如：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">DELETE</span> <span class="token operator">/</span>books<span class="token operator">/</span>_doc<span class="token operator">/</span><span class="token number">1</span>
+</code></pre></div><p>删除成功后，Elasticsearch 返回的信息中会给出类似 <code>&quot;found&quot; : true, &quot;result&quot; : &quot;deleted&quot;</code> 信息。</p> <h3 id="查询删除"><a href="#查询删除" class="header-anchor">#</a> 查询删除</h3> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">POST</span> <span class="token operator">/</span>索引名<span class="token operator">/</span>_doc<span class="token operator">/</span>_delete_by_query
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;term&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;FIELD1&quot;</span><span class="token operator">:</span> <span class="token string">&quot;VALUE1&quot;</span><span class="token punctuation">,</span>
+      <span class="token operator">...</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>如果是无条件删除所有文档，那么语法是：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">POST</span> 索引名<span class="token operator">/</span>_doc<span class="token operator">/</span>_delete_by_query
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;match_all&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="更新文档"><a href="#更新文档" class="header-anchor">#</a> 更新文档</h3> <p>文档被索引之后，如果要更新，那么 Elasticsearch 内部首先要找到这个文档，删除旧的文档内容执行更新，更新完之后再索引最新的文档。</p> <ul><li><p>语法：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">POST</span> 索引名<span class="token operator">/</span>_doc<span class="token operator">/</span>id值
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;field1&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;value1&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;field2&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;value2&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;field3&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;value3&quot;</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li></ul> <p>该命令与新增文档命令「看起来很像」，唯一不同的就是 PUT 请求变为 <strong>POST</strong> 请求。</p> <ul><li><p>执行成功时，返回的信息中我们可以看到 <code>已更新</code>，以及增加后的版本号。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token punctuation">{</span>
+  <span class="token operator">...</span>
+  <span class="token string">&quot;_version&quot;</span> <span class="token operator">:</span> xxx<span class="token punctuation">,</span>
+  <span class="token string">&quot;result&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;updated&quot;</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li></ul> <p>再次强调，更新的底层原理是『<strong>先删除后增加</strong>』。</p> <p>POST 请求总结：</p> <ul><li><p>不带 ID 时，是新增操作，并且是要求 ElasticSearch 为新增数据的 _id 赋值。</p></li> <li><p>带 ID 时，是修改操作，通过携带的 ID 来指定要修改那条数据。</p></li></ul> <h3 id="局部更新文档"><a href="#局部更新文档" class="header-anchor">#</a> 局部更新文档</h3> <p>接受一个局部文档参数 <code>doc</code>，它会合并到现有文档中，对象合并在一起，存在的标量字段被覆盖，新字段被添加。</p> <ul><li><p>语法：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">POST</span> 索引值<span class="token operator">/</span>_doc<span class="token operator">/</span>id值<span class="token operator">/</span>_update
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;doc&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;field1&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;value1&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;field2&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;value2&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;field3&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;value3&quot;</span><span class="token punctuation">,</span>
+    <span class="token operator">...</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li></ul> <p>局部更新仍旧也是先删除旧文档，再重新添加新文档。</p> <h3 id="映射"><a href="#映射" class="header-anchor">#</a> 映射</h3> <p>映射也就是 Mapping ，用来定义一个文档<small>（Document）</small>以及其包含的字段如何被存储和索引，可以再映射中事先定义字段的数据类型、分词器等属性。</p> <p>简单来说，Elasticsearch 中的映射就如同数据库领域中的表定义。</p> <p>映射可分为『<strong>动态映射</strong>』和『<strong>静态映射</strong>』。</p> <p>动态映射就是文档在写入 Elasticsearch 时，由 Elasticsearch 根据字段的类型自动识别。而静态映射就如同表定义，在写入数据之前对字段的属性进行手工设置。</p> <p>动态映射是一种偷懒的方式，在创建索引<small>（index）</small>后，直接去插入文档，跳过定义的环节，而由 Elasticsearch 根据插入的文档的数据来自己识别。</p> <p>Elasticsearch 自动推测字段类型的规则</p> <table><thead><tr><th style="text-align:left;">JSON 格式的数据</th> <th style="text-align:left;">自动推测的字段类型</th></tr></thead> <tbody><tr><td style="text-align:left;">null</td> <td style="text-align:left;">没有字段被添加</td></tr> <tr><td style="text-align:left;">true or false</td> <td style="text-align:left;">boolean 类型</td></tr> <tr><td style="text-align:left;">浮点类型数字</td> <td style="text-align:left;">float 类型</td></tr> <tr><td style="text-align:left;">数字</td> <td style="text-align:left;">long 类型</td></tr> <tr><td style="text-align:left;">JSON 对象</td> <td style="text-align:left;">object 类型</td></tr> <tr><td style="text-align:left;">数组</td> <td style="text-align:left;">由数组中第一个非空值决定</td></tr> <tr><td style="text-align:left;">string</td> <td style="text-align:left;">有可能是 date 类型、double 类型或 long 类型、text 类型、keyword 类型</td></tr></tbody></table> <hr> <p>动态映射看似很方便，但是有一个缺点：它使用的是默认的分词器<small>（standard）</small>，特别是对于我们中文环境而言，这简直就是致命缺点。</p> <p>因此，通常我们在创建完索引之后，会手动创建映射：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">PUT</span> <span class="token operator">/</span>索引名称<span class="token operator">/</span>_mapping
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;properties&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;属性名&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;类型&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;属性名&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;keyword&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;属性名&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;text&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;analyzer&quot;</span><span class="token operator">:</span> <span class="token string">&quot;分词器分词方式&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;属性名&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;date&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;format&quot;</span><span class="token operator">:</span> <span class="token string">&quot;格式1 || 格式2 || ...&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token operator">...</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>例如，<code>素材</code> 中的 mapping 命令：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">PUT</span> <span class="token operator">/</span>books<span class="token operator">/</span>_mapping
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;properties&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;id&quot;</span>      <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;keyword&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;title&quot;</span>   <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;text&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;analyzer&quot;</span><span class="token operator">:</span> <span class="token string">&quot;ik_smart&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;language&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;keyword&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;author&quot;</span>  <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;keyword&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;price&quot;</span>   <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;float&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;publish_date&quot;</span>  <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;date&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;format&quot;</span><span class="token operator">:</span> <span class="token string">&quot;yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;description&quot;</span>   <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;text&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;analyzer&quot;</span><span class="token operator">:</span> <span class="token string">&quot;ik_max_word&quot;</span> <span class="token punctuation">}</span> 
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>查看索引的 mapping ，命令如下：</p> <div class="language-text extra-class"><pre class="language-text"><code>GET xxx/_mapping
+</code></pre></div><p>如果你输入字符串看起来像日期<small>（例如：2000-1-1）</small>，那么 Elasticsearch 会将它识别为一个 date 类型的字段。</p> <p>另外，Elasticsearch 5.X 之后的字段类型不再支持 <strong>string</strong> ，而是由 <strong>text</strong> 和 <strong>keyword</strong> 取代。</p> <ul><li><p><strong>text</strong> 类型的字段中的数据会被分词，以支持全文索引；</p></li> <li><p><strong>keyword</strong> 类型的字段只能作为一个整体被精确搜索。</p></li></ul> <h2 id="_3-查询文档"><a href="#_3-查询文档" class="header-anchor">#</a> 3. 查询文档</h2> <p>Elasticsearch 提供了 GET API 查看在其中所存储的文档<small>（Document）</small>，使用 GET 命令并指定文档所在的索引<small>（index）</small>、类型<small>（type）</small>和 id 即可返回一个 JSON 格式的文档<small>（Document）</small>。</p> <p>如果所查看的文档存在，返回的信息中会含有 <code>&quot;found&quot; : true</code>，反之，则会含有 <code>&quot;found&quot; : false</code> 。</p> <h3 id="简单查询"><a href="#简单查询" class="header-anchor">#</a> 简单查询</h3> <h4 id="根据-id-查询"><a href="#根据-id-查询" class="header-anchor">#</a> 根据 ID 查询</h4> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> <span class="token operator">/</span>索引名<span class="token operator">/</span>_doc<span class="token operator">/</span>id值
+</code></pre></div><h4 id="空查询"><a href="#空查询" class="header-anchor">#</a> 空查询</h4> <p>空查询是指没有指定任何查询条件的查询。这种情况下，返回的是所有文档：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> 索引名<span class="token operator">/</span>_doc<span class="token operator">/</span>_search
+</code></pre></div><p>例如：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> books<span class="token operator">/</span>_doc<span class="token operator">/</span>_search
+</code></pre></div><p>你会看到，es 在建议你，不用写 _doc 关键字。即，写成：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> 索引名<span class="token operator">/</span>_search
+</code></pre></div><h4 id="分页查询"><a href="#分页查询" class="header-anchor">#</a> 分页查询</h4> <p>Elasticsearch 提供了两个结果分页的属性：</p> <table><thead><tr><th style="text-align:left;">分页属性</th> <th style="text-align:left;">说明</th></tr></thead> <tbody><tr><td style="text-align:left;"><strong>from</strong></td> <td style="text-align:left;">指定返回结果的开始位置。默认值为 0 。</td></tr> <tr><td style="text-align:left;"><strong>size</strong></td> <td style="text-align:left;">指定一次性返回结果包含的最大文档数量。</td></tr></tbody></table> <div class="language-javascript extra-class"><pre class="language-javascript"><code># <span class="token constant">GET</span> <span class="token operator">/</span>books<span class="token operator">/</span>_doc<span class="token operator">/</span>_search
+<span class="token constant">GET</span> <span class="token operator">/</span>books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;from&quot;</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;size&quot;</span> <span class="token operator">:</span> <span class="token number">100</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="显示版本号"><a href="#显示版本号" class="header-anchor">#</a> 显示版本号</h4> <p>默认情况下返回结果中不包含文档的版本号，如果需要，可以在查询体中设置 <strong>version</strong> 属性为 <strong>true</strong> 。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;version&quot;</span> <span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="排序"><a href="#排序" class="header-anchor">#</a> 排序</h4> <p>当搜索的字段有多个时，可以指定字段进行排序。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;sort&quot;</span> <span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span> <span class="token string">&quot;price&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;order&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;desc&quot;</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> <span class="token string">&quot;publish_date&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;order&quot;</span><span class="token operator">:</span> <span class="token string">&quot;asc&quot;</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="数据列过滤"><a href="#数据列过滤" class="header-anchor">#</a> 数据列过滤</h4> <p>数据列过滤允许在查询的时候不显示原始数据，或者显示部分原始数据。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;_source&quot;</span> <span class="token operator">:</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span>
+
+<span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;_source&quot;</span> <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;id&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;price&quot;</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="词项-term-查询"><a href="#词项-term-查询" class="header-anchor">#</a> 词项（term）查询</h3> <p>词项查询是对倒排序索引中存储的词进行精确操作。词项级别的查询通常用于结构化数据，如数字，日期。</p> <h4 id="term-查询"><a href="#term-查询" class="header-anchor">#</a> term 查询</h4> <p>term 查询用来查找 <code>所指定的字段中包含给定单词</code> 的文档。term 查询『<strong>不会被解析</strong>』，只有查询词和文档中的词精确匹配才会被搜索到。应用场景为查询人名、地名等需要精确匹配的需求。</p> <p>查询命令如下：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;term&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;title&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;思想&quot;</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="返回部分字段信息"><a href="#返回部分字段信息" class="header-anchor">#</a> 返回部分字段信息</h4> <p>默认情况下，返回的结果中包含了文档的所有字段信息，有时候为了简洁，只需要在查询结果中返回某些字段。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;_source&quot;</span> <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;title&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;author&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;term&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;title&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;思想&quot;</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="返回版本号"><a href="#返回版本号" class="header-anchor">#</a> 返回版本号</h4> <p>默认情况下，返回的结果中不包含文档的版本号，如果需要，可以在查询体中设置 <code>version</code> 属性为 <code>true</code> 。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;version&quot;</span> <span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;term&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;title&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;思想&quot;</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="最小评分过滤"><a href="#最小评分过滤" class="header-anchor">#</a> 最小评分过滤</h4> <p>Elasticsearch 提供了基于最小评分的过滤机制，通过这种机制，可以过滤/排除掉查询结果中相关性较低的结果。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;min_score&quot;</span> <span class="token operator">:</span> <span class="token number">0.6</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;term&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;title&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;思想&quot;</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="terms-查询"><a href="#terms-查询" class="header-anchor">#</a> terms 查询</h4> <p><code>terms</code> 查询是 <code>term</code> 查询的升级版，可以用来查询文档中包含多个词的文档。</p> <p>比如，想查询 title 字段中包含 <code>java</code> <strong>或</strong> <code>python</code> 的文档。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;terms&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span> 
+      <span class="token string">&quot;title&quot;</span> <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;java&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;python&quot;</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="全文-text-查询"><a href="#全文-text-查询" class="header-anchor">#</a> 全文（text）查询</h3> <p>全文搜索通常用于在全文（text）字段上进行搜索。</p> <blockquote><p>Elasticsearch 取消了 string 类型，取而代之的是 text 类型和 keyword 类型。</p> <p>两者的区别在于：text 类型的字段中存储的字符串会被分词器分词，而 keyword 类型字段中存储的字符串则被当作一个整体看待。</p></blockquote> <p>在执行全文搜索前，所要查询的字段的分词器会应用于查询字符串，对其进行分词。</p> <h4 id="match-查询"><a href="#match-查询" class="header-anchor">#</a> match 查询</h4> <p>如果你进行的是 <strong>match</strong> 查询，那么，你所提供的查询条件会被分词。即，</p> <p>你以为你提供的只是一个查询条件，其实你提供了一堆查询条件，而这是一堆条件之间是『<strong>或</strong>』 的关系。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;match&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;title&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;java编程&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>match 查询会对查询语句进行分词，分词后查询语句中的任何一个词项被匹配，文档即被选中。</p> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>想知道中文字符串被分词器解析出几个词项，可以通过下面命令简介知道：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">POST</span> _analyze
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;analyzer&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;ik_max_word 或 ik_smart&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;text&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;内容&quot;</span>
+<span class="token punctuation">}</span>
+
+# 查看某个字段的分词结果
+<span class="token constant">GET</span> 索引名<span class="token operator">/</span>_doc<span class="token operator">/</span>指定<span class="token constant">ID</span><span class="token operator">/</span>_termvectors<span class="token operator">?</span>fields<span class="token operator">=</span>字段名
+</code></pre></div></div> <p>如果想查询匹配所有关键词的文档，可以用 <code>and</code> 操作符连接。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;match&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;title&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;java编程思想&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;operator&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;and&quot;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="match-phrase-查询"><a href="#match-phrase-查询" class="header-anchor">#</a> match_phrase 查询</h4> <p><code>match_phrase</code> 查询首先会把 query 内容分词，分词器可以自定义，同时文档还要满足以下两个条件才会被搜索到：</p> <ul><li>分词后所有词都要出现在该字段中</li> <li>字段中词项顺序要一直</li></ul> <div class="language- extra-class"><pre class="language-text"><code>GET test/_search
+{
+  &quot;query&quot; : {
+    &quot;match_phrase&quot; : {
+        &quot;foo&quot; : &quot;hello world&quot;
+    }
+  }
+}
+</code></pre></div><ul><li><code>{ &quot;foo&quot; : &quot;I just said hello world&quot; }</code> 会被选中</li> <li><code>{ &quot;foo&quot; : &quot;Hello world&quot; }</code> 会被选中</li> <li><code>{ &quot;foo&quot; : &quot;World hello&quot; }</code> 则不会</li></ul> <h4 id="multi-match-查询"><a href="#multi-match-查询" class="header-anchor">#</a> multi_match 查询</h4> <p><code>multi_match</code> 查询是 <code>match</code> 查询的升级版，用于搜索多个字段。</p> <p>查询条件为 <code>java 编程</code>，查询域为 <code>title</code> 和 <code>description</code>：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;multi_match&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;java编程&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;fields&quot;</span> <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;title&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;description&quot;</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><code>multi_match</code> 支持对要搜索的字段的名称使用通配符：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token string">&quot;fields&quot;</span> <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;title&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;*_name&quot;</span><span class="token punctuation">]</span>
+</code></pre></div><h3 id="其它查询"><a href="#其它查询" class="header-anchor">#</a> 其它查询</h3> <h4 id="range-查询"><a href="#range-查询" class="header-anchor">#</a> range 查询</h4> <p><code>range</code> 查询用于匹配在某一范围内的数值型、日期类型的文档。比如搜索哪些书籍的价格在 50 到 100 之间，哪些书籍的出版日期在 2014 年到 2016 年之间。</p> <p>使用 <code>range</code> 查询只能查询一个字段，不能作用于多个字段上。</p> <p><code>range</code> 查询支持的参数有以下几种：</p> <table><thead><tr><th style="text-align:left;">参数</th> <th style="text-align:left;">说明</th></tr></thead> <tbody><tr><td style="text-align:left;"><code>gt</code></td> <td style="text-align:left;">大于。查询范围的最小值，也就是下限，但不包含临界值。</td></tr> <tr><td style="text-align:left;"><code>gte</code></td> <td style="text-align:left;">大于等于。和 <code>gt</code> 的区别在于包含临界值。</td></tr> <tr><td style="text-align:left;"><code>lt</code></td> <td style="text-align:left;">小于。查询范围的最大值，也就是上限，但不包含临界值。</td></tr> <tr><td style="text-align:left;"><code>lte</code></td> <td style="text-align:left;">大于等于。和 <code>lt</code> 的区别在于包含临界值。</td></tr></tbody></table> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;range&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;price&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">&quot;gt&quot;</span> <span class="token operator">:</span> <span class="token number">50</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;lte&quot;</span> <span class="token operator">:</span> <span class="token number">70</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;range&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;publish_date&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">&quot;gte&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;2016-01-01&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;lte&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;2016-12-31&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;format&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;yyyy-MM-dd&quot;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="exists-查询"><a href="#exists-查询" class="header-anchor">#</a> exists 查询</h4> <p><code>exists</code> 查询会返回字段中至少有一个非空值的文档。例如：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;exists&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;field&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;user&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>对于上述情况，被选中的文档会有：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>· <span class="token punctuation">{</span> <span class="token string">&quot;user&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;tom&quot;</span> <span class="token punctuation">}</span>
+· <span class="token punctuation">{</span> <span class="token string">&quot;user&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;&quot;</span> <span class="token punctuation">}</span>
+· <span class="token punctuation">{</span> <span class="token string">&quot;user&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;-&quot;</span> <span class="token punctuation">}</span>
+· <span class="token punctuation">{</span> <span class="token string">&quot;user&quot;</span> <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;tom&quot;</span><span class="token punctuation">]</span> <span class="token punctuation">}</span>
+· <span class="token punctuation">{</span> <span class="token string">&quot;user&quot;</span> <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;tom&quot;</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">]</span> <span class="token punctuation">}</span>
+</code></pre></div><p>不会被选中的文档有：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>· <span class="token punctuation">{</span> <span class="token string">&quot;user&quot;</span> <span class="token operator">:</span> <span class="token keyword">null</span> <span class="token punctuation">}</span>
+· <span class="token punctuation">{</span> <span class="token string">&quot;user&quot;</span> <span class="token operator">:</span> <span class="token keyword">null</span> <span class="token punctuation">}</span>
+· <span class="token punctuation">{</span> <span class="token string">&quot;user&quot;</span> <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">}</span>
+· <span class="token punctuation">{</span> <span class="token string">&quot;user&quot;</span> <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token keyword">null</span><span class="token punctuation">]</span> <span class="token punctuation">}</span>
+· <span class="token punctuation">{</span> <span class="token string">&quot;hello&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;world&quot;</span> <span class="token punctuation">}</span>
+</code></pre></div><h4 id="prefix-查询"><a href="#prefix-查询" class="header-anchor">#</a> prefix 查询</h4> <p><strong>prefix</strong> 查询用于查询某个字段中『以给定前缀开始』的文档。</p> <p>比如，查询 title 中以 <code>java</code> 为前缀的文档，那么含有 <code>java</code>、<code>javascript</code>、<code>javaee</code> 等以 java 开头的关键词的文档都会被选中。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;prefix&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;title&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;java&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="custom-block warning"><p class="custom-block-title">注意</p> <p>prefix 查询性能并不很高，需要消耗较多的 CPU 资源。</p></div> <h4 id="wildcard-查询"><a href="#wildcard-查询" class="header-anchor">#</a> wildcard 查询</h4> <p><strong>wildcard</strong> 查询就是通配符查询，支持单字符和多字符通配。</p> <p><code>?</code> 用来匹配任意一个字符，<code>*</code> 用来匹配零个或多个字符。</p> <div class="custom-block warning"><p class="custom-block-title">注意</p> <p>和 prefix 查询一样，wildcard 查询的查询性能也不是很高。</p></div> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;wildcard&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;author&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;张*&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="复合查询"><a href="#复合查询" class="header-anchor">#</a> 复合查询</h3> <p>复合查询就是把一些简单查询组合在一起实现更复杂的查询需求。</p> <h4 id="bool-查询"><a href="#bool-查询" class="header-anchor">#</a> bool 查询</h4> <p>bool 查询可以把任意多个简单查询组合在一起，使用 <code>must</code>、<code>should</code>、<code>must_not</code>、<code>filter</code> 选项来表示简单查询之间的逻辑。每个选项都可以出现 0 到多次，具体含义如下：</p> <table><thead><tr><th style="text-align:left;">选项</th> <th style="text-align:left;">说明</th></tr></thead> <tbody><tr><td style="text-align:left;"><code>must</code></td> <td style="text-align:left;">文档必须匹配 <code>must</code> 选项下的查询条件，相当于 AND 。</td></tr> <tr><td style="text-align:left;"><code>should</code></td> <td style="text-align:left;">文档可以匹配 <code>should</code> 选项下的条件，也可以不匹配。相当于 OR 。</td></tr> <tr><td style="text-align:left;"><code>must_not</code></td> <td style="text-align:left;">与 <code>must</code> 相反，匹配该选项下的查询条件的文档会被排除，不显示。</td></tr> <tr><td style="text-align:left;"><code>filter</code></td> <td style="text-align:left;">和 <code>must</code> 一样，匹配 filter 选项下的条件的文档才会被选中，显示。但 filter 不评分，只起到过滤功能。</td></tr></tbody></table> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token punctuation">{</span>
+    <span class="token string">&quot;match&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;brown fox&quot;</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>实际上相当于就是：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 命中的数据的 tittle 可以有 brown（也可以没有），可以有 fox（也可以没有）。</span>
+<span class="token comment">// 两个条件都是可以有（也可以没有）。</span>
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;bool&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;should&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span> <span class="token string">&quot;term&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;brown&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span> <span class="token string">&quot;term&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;fox&quot;</span>   <span class="token punctuation">}</span><span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token punctuation">{</span>
+    <span class="token string">&quot;match&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">&quot;title&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string">&quot;query&quot;</span><span class="token operator">:</span>    <span class="token string">&quot;brown fox&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;operator&quot;</span><span class="token operator">:</span> <span class="token string">&quot;and&quot;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>相当于就是：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 命中的数据的 tittle 必须有 brown ，必须有 fox 。</span>
+<span class="token comment">// 两个条件都是必须有。</span>
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;bool&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;must&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span> <span class="token string">&quot;term&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;brown&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span> <span class="token string">&quot;term&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;fox&quot;</span>   <span class="token punctuation">}</span><span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>例如：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 命中的数据的 tittle 必须有 brown ，desciption 中可以有“虚拟机”（也可以没有），price 必须不能大于等于 70 。</span>
+<span class="token constant">GET</span> books<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;query&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;bool&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;must&quot;</span> <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+        <span class="token string">&quot;match&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;title&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;java&quot;</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;should&quot;</span> <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+        <span class="token string">&quot;match&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;description&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;虚拟机&quot;</span><span class="token punctuation">}</span> 
+      <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;must_not&quot;</span> <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+        <span class="token string">&quot;range&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token string">&quot;price&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;gte&quot;</span><span class="token operator">:</span> <span class="token number">70</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/es/01-概念.html" class="prev">
+        基本操作
+      </a></span> <span class="next"><a href="/es/03-spring-boot.html">
+        Spring Boot 整合 ElasticSearch
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.2a0e0086.js" defer></script><script src="/assets/js/2.5197d4bf.js" defer></script><script src="/assets/js/49.f6cefa1d.js" defer></script>
+  </body>
+</html>
